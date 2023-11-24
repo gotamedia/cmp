@@ -1,4 +1,4 @@
-# cmp
+# CMP (Consent Management Platform)
 A CMP package dedicated to be used in React + Fluffy applications
 
 ## Install
