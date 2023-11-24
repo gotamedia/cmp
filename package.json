@@ -1,0 +1,53 @@
+{
+  "name": "@gotamedia/cmp",
+  "version": "0.0.1",
+  "description": "A CMP package dedicated to be used in React + Fluffy applications",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "storybook dev -p 6006",
+    "build": "rollup -c",
+    "npm:details": "npm pack --dry-run",
+    "npm:publish": "npm run build && npm publish --access public"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "@gotamedia/fluffy": ">=0.30.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "styled-components": ">=5.0.0"
+  },
+  "dependencies": {
+    "@didomi/react": "^1.8.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@gotamedia/fluffy": "0.39.8",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/react": "^7.5.3",
+    "@storybook/react-webpack5": "^7.5.3",
+    "@types/react": "^18.2.38",
+    "@types/styled-components": "^5.1.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.29.4",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "storybook": "^7.5.3",
+    "styled-components": "^5.3.6"
+  }
+}

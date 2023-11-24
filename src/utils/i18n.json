@@ -1,0 +1,151 @@
+{
+    "content": {
+        "popup": "<h4>{websiteName} använder cookies</h4><p>För att du ska få en så bra upplevelse som möjligt på webbplatsen använder vi kakor och liknande tekniker (som vi tillsammans kallas kakor) det innebär att vi lagrar och/eller får tillgång till viss information på din enhet såsom mobil, dator eller läsplatta.</p><p>Vi använder också kakor från olika <a href=\"javascript:Didomi.preferences.show('vendors')\">partners</a> för flera av ändamålen som listas nedan vilket innebär att även partnern lagrar och/eller får tillgång till viss information på din enhet.</p><p>Användningen av kakor innebär att vi behandlar dina personuppgifter såsom IP-adress, unika identifierare och beteendedata. Vi och våra partners använder samtycke eller berättigat intresse som laglig grund för behandlingen av dina personuppgifter.</p><h4>Dina val</h4><ul><li>Om du klickar på knappen \"Okej\" på denna sida samtycker du till att vi använder kakor för de ändamål som listas.</li><li>Du kan anpassa dina val under knappen \"Inställningar\" där du kan välja vilka ändamål du vill neka eller godkänna.</li><li>Klicka på respektive ändamål för att se detaljerad information om ändamålet och för att neka personuppgiftsbehandling som baseras på samtycke eller berättigat intresse.</li><li>Klicka på \"Inställningar per partner\" för att se detaljerad information om våra partners och för att göra dina val per partner. Där ser du även vilken typ av data partnern behandlar, samt information om de kakor som partnern lagrar på din enhet.</li><li>Du kan närsomhelst återkalla ditt samtycke, invända mot behandlingen samt justera dina val genom att klicka på \"Hantera kakor\" på denna webbplats.</li></ul><p>I vår <a href=\"https://kundcenter.gotamedia.se/cookies/\" target=\"_blank\">Kakpolicy</a> och <a href=\"https://kundcenter.gotamedia.se/personuppgiftspolicy/\" target=\"_blank\">Personuppgiftspolicy</a> kan du fördjupa dig ytterligare.</p><h4>Kakor och personuppgifter används för:</h4><p>Att skapa profiler som används för att visa anpassade annonser och innehåll, annons- och innehållsmätning, målgruppsstatistik, analys och utveckling, att anpassa marknadsföring och att marknadsföra våra produkter på andra plattformar, samt att visa externt innehåll från bl a sociala medier, ljud och video. Vi och våra partners använder personuppgifter såsom IP-adress, unika identifierare och beteendedata såsom surfhistorik, teknisk information om din enhet och geolokaliseringsdata. Dina exakta uppgifter om geografisk position kan användas för bl a anpassning av annonser, och din enhet kan identifieras baserat på din enhets egenskaper. Vi använder även nödvändiga och funktionella cookies och tekniker.</p>"
+    },
+    "vendors": [
+        {
+            "id": 50,
+            "name": "Adform A/S"
+        },
+        {
+            "id": 612,
+            "name": "Adnami Aps"
+        },
+        {
+            "id": 900,
+            "name": "Advisible AB"
+        },
+        {
+            "id": 793,
+            "name": "Amazon Advertising"
+        },
+        {
+            "id": 273,
+            "name": "Bannerflow AB"
+        },
+        {
+            "id": 12,
+            "name": "BeeswaxIO Corporation"
+        },
+        {
+            "id": 128,
+            "name": "BIDSWITCH GmbH"
+        },
+        {
+            "id": 30,
+            "name": "BidTheatre AB"
+        },
+        {
+            "id": 91,
+            "name": "Criteo SA"
+        },
+        {
+            "id": 209,
+            "name": "Delta Projects AB"
+        },
+        {
+            "id": 397,
+            "name": "Demandbase, Inc."
+        },
+        {
+            "id": 1097,
+            "name": "EinRadAB"
+        },
+        {
+            "id": 8,
+            "name": "Emerse Sverige AB"
+        },
+        {
+            "id": "facebook",
+            "name": "Facebook"
+        },
+        {
+            "id": "google",
+            "name": "Google Advertising Products"
+        },
+        {
+            "id": 253,
+            "name": "Improve Digital"
+        },
+        {
+            "id": 10,
+            "name": "Index Exchange Inc. "
+        },
+        {
+            "id": 129,
+            "name": "IPONWEB GmbH"
+        },
+        {
+            "id": 919,
+            "name": "Livewrapped AB"
+        },
+        {
+            "id": 52,
+            "name": "Magnite, Inc."
+        },
+        {
+            "id": 493,
+            "name": "Magnite, Inc. (Carbon AI Limited)"
+        },
+        {
+            "id": 102,
+            "name": "Magnite, Inc. (Outstream)"
+        },
+        {
+            "id": 140,
+            "name": "Platform161 B.V."
+        },
+        {
+            "id": 76,
+            "name": "PubMatic, Inc."
+        },
+        {
+            "id": 11,
+            "name": "Quantcast"
+        },
+        {
+            "id": 290,
+            "name": "Readpeak Oy"
+        },
+        {
+            "id": 16,
+            "name": "RTB House S.A."
+        },
+        {
+            "id": 415,
+            "name": "SeenthisAB"
+        },
+        {
+            "id": 111,
+            "name": "Showheroes SE"
+        },
+        {
+            "id": 45,
+            "name": "Smart Adserver"
+        },
+        {
+            "id": 851,
+            "name": "Strossle International AB"
+        },
+        {
+            "id": 21,
+            "name": "The UK Trade Desk Ltd"
+        },
+        {
+            "id": 423,
+            "name": "travel audience GmbH"
+        },
+        {
+            "id": "twitter",
+            "name": "Twitter"
+        },
+        {
+            "id": 32,
+            "name": "Xandr, Inc."
+        },
+        {
+            "id": 25,
+            "name": "Yahoo EMEA Limited"
+        }
+    ]
+}
