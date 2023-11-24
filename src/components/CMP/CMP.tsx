@@ -12,8 +12,6 @@ import type {
 import { DEFAULT_USER_CONSENT } from '../../contexts/UserConsent'
 import useUserConsentContext from '../../hooks/useUserConsentContext/useUserConsentContext'
 
-import defaultI18n from '../../utils/i18n.json'
-
 import * as Constants from './constants'
 import * as Styled from './style'
 import * as Utils from './utils'
@@ -27,7 +25,6 @@ const filterPurposes = (purpose: Constants.Purposes) => purposesSet.has(purpose)
 
 const CMP: Types.CMPType = (props) => {
     const {
-        i18n = defaultI18n,
         apiKey,
         noticeId,
         iabVersion,
@@ -42,7 +39,10 @@ const CMP: Types.CMPType = (props) => {
     
     const cache = useRef<{ userStatus?: IUserStatus }>({ userStatus: undefined })
 
-    const { _setUserConsent } = useUserConsentContext()
+    const {
+        i18n,
+        _setUserConsent
+    } = useUserConsentContext()
 
     const _config = useMemo(() => {
         return {
@@ -50,36 +50,6 @@ const CMP: Types.CMPType = (props) => {
             ...config
         }
     }, [config])
-
-    const handleOnConsentChanged = useCallback((value: any) => {
-        if (window.Didomi) {
-            onReady?.(window.Didomi)
-        }
-
-        onConsentChanged?.(value)
-    }, [onReady, onConsentChanged])
-
-    const handleOnNoticeShown = useCallback(() => {
-        const didomiNoticeElement = document.getElementById('didomi-popup')
-
-        if (didomiNoticeElement) {
-            didomiNoticeElement.scrollTo({ top: 0 })
-        }
-
-        onNoticeShown?.()
-    }, [onNoticeShown])
-
-    const handleOnNoticeClickMoreInfo = useCallback(() => {
-        setTimeout(() => {
-            const didomiNoticeElement = document.getElementById('didomi-consent-popup')
-
-            if (didomiNoticeElement) {
-                didomiNoticeElement.scrollTo({ top: 0 })
-            }
-        }, 100)
-
-        onNoticeClickMoreInfo?.()
-    }, [onNoticeClickMoreInfo])
 
     const handleOnReady = useCallback<OnReadyFunction>((didomi) => {
         const userStatus = didomi.getUserStatus()
@@ -132,10 +102,35 @@ const CMP: Types.CMPType = (props) => {
 
         _setUserConsent(updatedUserConsent)
 
-        if (window.Didomi) {
-            onReady?.(window.Didomi)
+        onReady?.(didomi)
+    }, [_setUserConsent, i18n.vendors, onReady])
+
+    const handleOnConsentChanged = useCallback((value: any) => {
+        onConsentChanged?.(value)
+        handleOnReady(window.Didomi)
+    }, [handleOnReady, onConsentChanged])
+
+    const handleOnNoticeShown = useCallback(() => {
+        const didomiNoticeElement = document.getElementById('didomi-popup')
+
+        if (didomiNoticeElement) {
+            didomiNoticeElement.scrollTo({ top: 0 })
         }
-    }, [i18n])
+
+        onNoticeShown?.()
+    }, [onNoticeShown])
+
+    const handleOnNoticeClickMoreInfo = useCallback(() => {
+        setTimeout(() => {
+            const didomiNoticeElement = document.getElementById('didomi-consent-popup')
+
+            if (didomiNoticeElement) {
+                didomiNoticeElement.scrollTo({ top: 0 })
+            }
+        }, 100)
+
+        onNoticeClickMoreInfo?.()
+    }, [onNoticeClickMoreInfo])
 
     return (
         <>

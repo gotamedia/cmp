@@ -2,8 +2,15 @@ import { useCallback } from 'react'
 import styled from 'styled-components'
 import Button from '@gotamedia/fluffy/Button'
 import { ThemeProvider } from '@gotamedia/fluffy/ThemeContext'
+import { StoryFn } from '@storybook/react'
 
-import ConsentNotice, { DEFAULT_CONSENT_CONFIG } from './'
+import Provider from './contexts/UserConsent'
+import CMPRComponent from './components/CMPR'
+import { CMPRProps } from './components/CMPR/types'
+import CMPComponent, {
+    DEFAULT_CONSENT_CONFIG,
+    Vendors
+} from './components/CMP'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -17,7 +24,11 @@ const StyledButton = styled(Button)`
     margin: 15px auto;
 `
 
-export const CMP = ({ brandColor, ...filteredProps }: any) => {
+const EmbedText = styled.p`
+    margin: 10px auto;
+`
+
+const Template = ({ brandColor, children, ...filteredProps }: any) => {
     const theme = {
         colors: {
             brand: brandColor
@@ -25,7 +36,7 @@ export const CMP = ({ brandColor, ...filteredProps }: any) => {
     }
 
     const handleOnShowNoticeClick = useCallback(() => {
-        window?.Didomi?.notice.show()
+        window?.Didomi?.notice?.show?.()
     }, [])
 
     const handleOnShowPurposesClick = useCallback(() => {
@@ -41,37 +52,83 @@ export const CMP = ({ brandColor, ...filteredProps }: any) => {
         window?.Didomi?.reset?.()
         window.location.reload()
     }, [])
-    
+
     return (
-        <ThemeProvider theme={theme}>
-            <Wrapper>
-                <StyledButton onClick={handleOnShowNoticeClick}>
-                    {'Show Consent Notice'}
-                </StyledButton>
+        <Provider>
+            <ThemeProvider theme={theme}>
+                <Wrapper>
+                    <StyledButton onClick={handleOnShowNoticeClick}>
+                        {'Show Consent Notice'}
+                    </StyledButton>
 
-                <StyledButton onClick={handleOnShowPurposesClick}>
-                    {'Show Preferences (Purposes)'}
-                </StyledButton>
+                    <StyledButton onClick={handleOnShowPurposesClick}>
+                        {'Show Preferences (Purposes)'}
+                    </StyledButton>
 
-                <StyledButton onClick={handleOnShowVendorsClick}>
-                    {'Show Preferences (Vendors)'}
-                </StyledButton>
+                    <StyledButton onClick={handleOnShowVendorsClick}>
+                        {'Show Preferences (Vendors)'}
+                    </StyledButton>
 
-                <StyledButton onClick={handleOnReset}>
-                    {'Reset'}
-                </StyledButton>
+                    <StyledButton onClick={handleOnReset}>
+                        {'Reset'}
+                    </StyledButton>
 
-                <ConsentNotice
-                    key={brandColor}
-                    {...filteredProps}
-                />
-            </Wrapper>
-        </ThemeProvider>
+                    <CMPComponent
+                        key={[
+                            brandColor,
+                            filteredProps.apiKey,
+                            filteredProps.noticeId,
+                            filteredProps.iabVersion,
+                            filteredProps.sdkPath,
+                        ].join('-')}
+                        {...filteredProps}
+                    />
+
+                    {children}
+                </Wrapper>
+            </ThemeProvider>
+        </Provider>
     )
 }
 
+export const CMP = (props: any) => {
+    return (
+        <>
+            <Template {...props} />
+        </>
+    )
+}
+
+export const CMPR: StoryFn<CMPRProps> = ({ vendor, ...filteredProps }: any) => {
+    return (
+        <>
+            <Template {...filteredProps}>
+                <CMPRComponent vendor={vendor}>
+                    <Wrapper>
+                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
+                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
+                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
+                    </Wrapper>
+                </CMPRComponent>
+            </Template>
+        </>
+    )
+}
+
+CMPR.args = {
+    vendor: Vendors.Facebook
+}
+
+CMPR.argTypes = {
+    vendor: {
+        options: Object.keys(Vendors),
+        mapping: Vendors,
+        control: { type: 'select' }
+    }
+}
+
 export default {
-    title: 'CMP',
+    title: 'Docs',
     component: CMP,
     args: {
         config: DEFAULT_CONSENT_CONFIG,

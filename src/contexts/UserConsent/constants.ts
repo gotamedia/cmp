@@ -1,6 +1,9 @@
-import type { ContextType } from './types'
+import defaultI18n from '../../utils/i18n.json'
+
 import { buildDefaultVendorStatus } from '../../components/CMP/utils'
 import { Purposes, Vendors } from '../../components/CMP/constants'
+
+import type { ContextType } from './types'
 
 export const DEFAULT_USER_CONSENT: ContextType = {
     isReady: false,
@@ -96,6 +99,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         transaction.enablePurposes(...params.purposes)
         transaction.commit()
     },
+    i18n: defaultI18n,
     _setUserConsent() {}
 }
 

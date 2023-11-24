@@ -7,15 +7,12 @@ import {
     OnPreferencesClickVendorFunction
 } from '@didomi/react'
 
-import i18n from '../../utils/i18n.json'
-
 import type {
     Purposes,
     Vendors,
 } from './constants'
 
 type CMPProps = {
-    i18n: typeof i18n,
     apiKey: string,
     noticeId: string,
     iabVersion?: number, 
