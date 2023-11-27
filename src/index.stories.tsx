@@ -1,6 +1,11 @@
-import { useCallback } from 'react'
+import {
+    useState,
+    useMemo,
+    useCallback
+} from 'react'
 import styled from 'styled-components'
 import Button from '@gotamedia/fluffy/Button'
+import Textarea from '@gotamedia/fluffy/Textarea'
 import { ThemeProvider } from '@gotamedia/fluffy/ThemeContext'
 import { StoryFn } from '@storybook/react'
 
@@ -28,10 +33,18 @@ const EmbedText = styled.p`
     margin: 10px auto;
 `
 
+const StyledTextarea = styled(Textarea)`
+    width: 600px;
+    height: 300px;
+`
+
 const Template = ({ brandColor, children, ...filteredProps }: any) => {
     const theme = {
         colors: {
             brand: brandColor
+        },
+        fonts: {
+            generic: []
         }
     }
 
@@ -58,15 +71,15 @@ const Template = ({ brandColor, children, ...filteredProps }: any) => {
             <ThemeProvider theme={theme}>
                 <Wrapper>
                     <StyledButton onClick={handleOnShowNoticeClick}>
-                        {'Show Consent Notice'}
+                        {'Show Notice'}
                     </StyledButton>
 
                     <StyledButton onClick={handleOnShowPurposesClick}>
-                        {'Show Preferences (Purposes)'}
+                        {'Show Purposes'}
                     </StyledButton>
 
                     <StyledButton onClick={handleOnShowVendorsClick}>
-                        {'Show Preferences (Vendors)'}
+                        {'Show Vendors'}
                     </StyledButton>
 
                     <StyledButton onClick={handleOnReset}>
@@ -76,6 +89,7 @@ const Template = ({ brandColor, children, ...filteredProps }: any) => {
                     <CMPComponent
                         key={[
                             brandColor,
+                            JSON.stringify(filteredProps.config),
                             filteredProps.apiKey,
                             filteredProps.noticeId,
                             filteredProps.iabVersion,
@@ -99,12 +113,85 @@ export const CMP = (props: any) => {
     )
 }
 
+export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
+    const [showConsent, setShowConsent] = useState(false)
+    const [noticeContent, setNoticeContent] = useState(DEFAULT_CONSENT_CONFIG.notice.content.popup.sv)
+
+    const _config = useMemo(() => {
+        return {
+            ...config,
+            notice: {
+                ...config.notice,
+                content: {
+                    ...config.notice.content,
+                    popup: {
+                        sv: noticeContent
+                    }
+                }
+            }
+        }
+    }, [config, noticeContent])
+
+    const handleShowConsent = useCallback(() => {
+        setShowConsent(true)
+        window?.Didomi?.notice?.show?.()
+    }, [])
+
+    const handleOnReset = useCallback(() => {
+        window?.Didomi?.reset?.()
+        window.location.reload()
+    }, [])
+
+    const theme = {
+        colors: {
+            brand: brandColor
+        },
+        fonts: {
+            generic: []
+        }
+    }
+
+    return (
+        <Provider>
+            <ThemeProvider theme={theme}>
+                <Wrapper>
+                    <StyledTextarea
+                        value={noticeContent}
+                        onValueChange={setNoticeContent}
+                    />
+
+                    <StyledButton onClick={handleShowConsent}>
+                        {'Show Notice'}
+                    </StyledButton>
+
+                    <StyledButton onClick={handleOnReset}>
+                        {'Reset'}
+                    </StyledButton>
+
+                    {
+                        showConsent ? (
+                            <CMPComponent
+                                {...filteredProps}
+                                config={_config}
+                            />
+                        ) : (
+                            null
+                        )
+                    }
+
+                </Wrapper>
+            </ThemeProvider>
+        </Provider>
+    )
+}
+
 export const CMPR: StoryFn<CMPRProps> = ({ vendor, ...filteredProps }: any) => {
     return (
         <>
             <Template {...filteredProps}>
                 <CMPRComponent vendor={vendor}>
                     <Wrapper>
+                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
                         <EmbedText> {'<--- Embeds content --->'} </EmbedText>
                         <EmbedText> {'<--- Embeds content --->'} </EmbedText>
                         <EmbedText> {'<--- Embeds content --->'} </EmbedText>
@@ -121,14 +208,14 @@ CMPR.args = {
 
 CMPR.argTypes = {
     vendor: {
-        options: Object.keys(Vendors),
+        options: Object.keys(Vendors).map(i => Number(i) ? null : i).filter(Boolean ),
         mapping: Vendors,
         control: { type: 'select' }
     }
 }
 
 export default {
-    title: 'Docs',
+    title: 'Docs/Components',
     component: CMP,
     args: {
         config: DEFAULT_CONSENT_CONFIG,

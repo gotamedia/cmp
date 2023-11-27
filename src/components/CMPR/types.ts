@@ -1,13 +1,20 @@
-import type { FC, ReactNode } from 'react'
+import type {
+    ReactNode,
+    RefAttributes,
+    ForwardRefExoticComponent,
+    HTMLAttributes
+} from 'react'
 
 import type { Vendors } from '../CMP'
 
-type CMPRProps = {
+type NativeDivProps = HTMLAttributes<HTMLDivElement>
+
+interface CMPRProps extends NativeDivProps {
     vendor: Vendors,
-    children: ReactNode | ReactNode[]
+    children: ReactNode
 }
 
-type CMPRType = FC<CMPRProps>
+type CMPRType = ForwardRefExoticComponent<CMPRProps & RefAttributes<HTMLDivElement>>
 
 export type {
     CMPRType,

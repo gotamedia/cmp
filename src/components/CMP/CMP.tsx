@@ -3,6 +3,7 @@ import {
     useMemo,
     useCallback
 } from 'react'
+import { useIsomorphicLayoutEffect } from '@gotamedia/fluffy'
 import { DidomiSDK } from '@didomi/react'
 import type {
     IUserStatus,
@@ -27,9 +28,11 @@ const CMP: Types.CMPType = (props) => {
     const {
         apiKey,
         noticeId,
-        iabVersion,
         sdkPath,
         config,
+        iabVersion = 2,
+        cleanUpCookies = true,
+        cookiesToKeep = [],
         onReady,
         onConsentChanged,
         onNoticeShown,
@@ -41,8 +44,15 @@ const CMP: Types.CMPType = (props) => {
 
     const {
         i18n,
+        shouldRemoveCookies,
         _setUserConsent
     } = useUserConsentContext()
+
+    useIsomorphicLayoutEffect(() => {
+        if (cleanUpCookies && shouldRemoveCookies) {
+            Utils.clearCookiesOnConsentChange(cookiesToKeep)
+        }
+    }, [cleanUpCookies, shouldRemoveCookies])
 
     const _config = useMemo(() => {
         return {

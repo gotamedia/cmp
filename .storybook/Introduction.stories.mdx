@@ -1,3 +1,14 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Introduction'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
 # CMP (Consent Management Platform)
 A CMP package dedicated to be used in React + Fluffy applications
 
@@ -10,10 +21,10 @@ npm i @gotamedia/cmp
 ## Peer dependencies
 CMP requires that you install following depdencies in your own project
 ```sh
-npm i react
+npm i @gotamedia/fluffy \
+    react \
     react-dom \
     styled-components
-    @gotamedia/fluffy
 ```
 
 ## Usage
@@ -51,7 +62,7 @@ npm install -g yalc
 
 To use CMP in your project locally make sure to build CMP by running:
 ```sh
-npm run build:local
+npm run local
 ```
 
 This will make sure to build and publish CMP into a local registery on your machine so you can install it as a package in your projects
@@ -73,6 +84,7 @@ This will make sure to remove the link from your project's dependencies and reve
 
 [Read more about yalc](https://www.npmjs.com/package/yalc)
 
+
 ## Build
 
 CMP uses Rollup to build and bundle
@@ -82,20 +94,12 @@ npm run build
 
 ## Publish
 
-To inspect the package before publishing to npm
+To the package before publishing to npm
 ```sh
-npm run package:details
+npm run npm:details
 ```
 
 To publish to npm
 ```sh
-npm run package:publish
+npm run npm:publish
 ```
-
-## CMP Development & Contributing
-
-### Trunk based development
-This project uses a [trunk based development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development) workflow.
-
-### Conventional commits
-This project works with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).

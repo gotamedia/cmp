@@ -133,3 +133,4 @@ dist
 .history
 .rollup.cache
 tsconfig.tsbuildinfo
+storybook-static

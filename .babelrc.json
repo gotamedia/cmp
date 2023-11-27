@@ -15,5 +15,7 @@
     "@babel/preset-react"
   ],
   "exclude": "node_modules/**",
-  "plugins": []
+  "plugins": [
+    "babel-plugin-styled-components"
+  ]
 }

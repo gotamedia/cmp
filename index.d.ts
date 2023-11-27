@@ -5,6 +5,9 @@ declare module 'styled-components' {
     export interface DefaultTheme {
         colors: {
             brand: string
+        },
+        fonts: {
+            generic: any
         }
     }
 }

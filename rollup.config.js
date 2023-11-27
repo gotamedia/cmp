@@ -1,10 +1,12 @@
 const babel = require('@rollup/plugin-babel')
 const resolve = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
-const terser = require('@rollup/plugin-terser')
-const typescript = require('rollup-plugin-typescript2')
-const cmpPackage = require('./package.json')
 const json = require('@rollup/plugin-json')
+
+const typescript = require('rollup-plugin-typescript2')
+const peerDepsExternal = require('rollup-plugin-peer-deps-external')
+
+const cmpPackage = require('./package.json')
 
 module.exports = {
     input: 'src/index.ts',
@@ -12,26 +14,27 @@ module.exports = {
         {
             file: cmpPackage.main,
             format: 'cjs',
-            exports: 'named',
-            sourcemap: true
+            exports: 'auto',
+            sourcemap: true,
+            interop: 'auto'
         },
         {
             file: cmpPackage.module,
             format: 'es',
-            exports: 'named',
-            sourcemap: true
+            exports: 'auto',
+            sourcemap: true,
+            interop: 'auto'
         }
     ],
     plugins: [
-        babel(),
-        json(),
+        peerDepsExternal(),
         resolve(),
         commonjs(),
-        terser(),
         typescript({
-            rollupCommonJSResolveHack: false,
             clean: true,
-        })
-    ],
-    external: Object.keys(cmpPackage.peerDependencies)
+            rollupCommonJSResolveHack: false
+        }),
+        babel(),
+        json()
+    ]
 }

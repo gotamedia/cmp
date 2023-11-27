@@ -15,6 +15,8 @@ import type {
 type CMPProps = {
     apiKey: string,
     noticeId: string,
+    cleanUpCookies?: boolean,
+    cookiesToKeep?: string[],
     iabVersion?: number, 
     sdkPath?: string,
     config?: IDidomiConfig,

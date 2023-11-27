@@ -11,8 +11,10 @@
   "scripts": {
     "start": "storybook dev -p 6006",
     "build": "rollup -c",
-    "npm:details": "npm pack --dry-run",
-    "npm:publish": "npm run build && npm publish --access public"
+    "build:docs": "./scripts/storybook.sh && storybook build",
+    "build:local": "npm run build && yalc push",
+    "package:details": "npm pack --dry-run",
+    "package:publish": "npm run build && npm publish --access public"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -31,7 +33,7 @@
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@gotamedia/fluffy": "0.39.8",
+    "@gotamedia/fluffy": "^0.39.8",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.0.1",
@@ -39,12 +41,15 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
     "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/manager-api": "^7.5.3",
     "@storybook/react": "^7.5.3",
     "@storybook/react-webpack5": "^7.5.3",
+    "@storybook/theming": "^7.5.3",
     "@types/react": "^18.2.38",
     "@types/styled-components": "^5.1.32",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8.54.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -52,8 +57,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.29.4",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^7.5.3",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.11"
   }
 }

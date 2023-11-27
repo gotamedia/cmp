@@ -1,12 +1,14 @@
+import { forwardRef } from 'react'
 import useCMPR from '../../hooks/useCMPR'
 
 import * as Styled from './style'
 import type * as Types from './types'
 
-const CMPR: Types.CMPRType = (props) => {
+const CMPR: Types.CMPRType = forwardRef((props, ref) => {
     const {
         children,
-        vendor
+        vendor,
+        ...filteredProps
     } = props
 
     const {
@@ -25,7 +27,10 @@ const CMPR: Types.CMPRType = (props) => {
     }
 
     return (
-        <Styled.Wrapper>
+        <Styled.Wrapper
+            ref={ref}
+            {...filteredProps}
+        >
             <Styled.InnerWrapper>
                 <Styled.Headline>
                     {i18n.headline}
@@ -47,6 +52,6 @@ const CMPR: Types.CMPRType = (props) => {
             </Styled.InnerWrapper>
         </Styled.Wrapper>
     )
-}
+})
 
 export default CMPR
