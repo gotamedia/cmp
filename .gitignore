@@ -134,3 +134,4 @@ dist
 .rollup.cache
 tsconfig.tsbuildinfo
 storybook-static
+.storybook/CHANGELOG.stories.mdx
