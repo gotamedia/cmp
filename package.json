@@ -14,7 +14,7 @@
     "build:docs": "./scripts/storybook.sh && storybook build",
     "build:local": "npm run build && yalc push",
     "package:details": "npm pack --dry-run",
-    "package:publish": "npm run build && npm publish --access public"
+    "package:publish": "npm publish --access public"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-code="import { Source, Meta } from '@storybook/addon-docs'
+INTRODUCTION_CODE="import { Source, Meta } from '@storybook/addon-docs'
 
 <Meta
     title={'Introduction'}
@@ -12,4 +12,17 @@ code="import { Source, Meta } from '@storybook/addon-docs'
 />
 "
 
-echo -e "$code\n$(cat ./README.md)" > .storybook/Introduction.stories.mdx
+CHANGELOG_CODE="import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'CHANGELOG'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+"
+
+echo -e "$INTRODUCTION_CODE\n$(cat ./README.md)" > .storybook/Introduction.stories.mdx
+echo -e "$CHANGELOG_CODE\n$(cat ./CHANGELOG.md)" > .storybook/CHANGELOG.stories.mdx
