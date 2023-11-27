@@ -142,9 +142,11 @@ const CMP: Types.CMPType = (props) => {
         onNoticeClickMoreInfo?.()
     }, [onNoticeClickMoreInfo])
 
+    const fontFamily = _config?.theme?.font
+
     return (
         <>
-            <Styled.ConsentStyle />
+            <Styled.ConsentStyle fontFamily={fontFamily} />
 
             <DidomiSDK
                 embedTCFStub

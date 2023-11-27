@@ -2,7 +2,7 @@ import {
     css,
     createGlobalStyle
 } from 'styled-components'
-import { themeHelpers } from '@gotamedia/fluffy'
+import { themeHelpers, Polished } from '@gotamedia/fluffy'
 
 const scrollMoreStyle = css`
     background: linear-gradient(#ffffff 33%, rgba(255,255,255, 0)),
@@ -15,10 +15,14 @@ const scrollMoreStyle = css`
     background-size: 100% 39px, 100% 39px, 100% 13px, 100% 13px !important;
 `
 
-const ConsentStyle = createGlobalStyle`
+const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
     #didomi-host {
         * {
             -webkit-font-smoothing: auto !important;
+
+            ${({ fontFamily }) => fontFamily && css`
+                font-family: ${fontFamily};
+            `}
         }
 
         *:focus {
@@ -103,10 +107,11 @@ const ConsentStyle = createGlobalStyle`
 
                         li {
                             list-style: disc !important;
+                            margin-bottom: 8px !important;
                         }
 
                         p {
-                            margin-bottom: 15px !important;
+                            margin-bottom: 12px !important;
                         }
                     }
 
@@ -374,6 +379,10 @@ const ConsentStyle = createGlobalStyle`
                                     font-size: 14px !important;
                                     font-weight: 400 !important;
                                     transition: none !important;
+
+                                    &:hover {
+                                        background-color: #eaeaea !important;
+                                    }
                                 }
                             }
                         }
@@ -415,6 +424,10 @@ const ConsentStyle = createGlobalStyle`
                     margin-right: 0 !important;
                     color: ${({ theme }) => theme.colors.brand} !important;
                     background-color: white !important;
+
+                    &:hover {
+                        background-color: ${({ theme }) => Polished.tint(0.88, theme.colors.brand)} !important;
+                    }
                 }
 
                 &-highlight {
@@ -422,6 +435,11 @@ const ConsentStyle = createGlobalStyle`
                     margin-right: 0 !important;
                     color: white !important;
                     background-color: ${({ theme }) => theme.colors.brand} !important;
+
+                    &:hover {
+                        color: white;
+                        background-color: ${({ theme }) => Polished.shade(0.08, theme.colors.brand)} !important;
+                    }
                 }
             }
 
@@ -479,10 +497,10 @@ const ConsentStyle = createGlobalStyle`
                 }
 
                 &-radio {
-                    &__option {    
+                    &__option {
                         width: 130px !important;
                         border-radius: 3px !important;
-                        background-color: #E9E9E8 !important;
+                        background-color: #e9e9e8 !important;
                         width: 120px;
                         color: black !important;
                         border: 0 !important;
@@ -490,6 +508,10 @@ const ConsentStyle = createGlobalStyle`
                         height: 36px !important;
                         padding: 0 !important;
                         font-weight: 400 !important;
+
+                        &:hover {
+                            background-color: #dedede !important;
+                        }
 
                         &:first-child {
                             margin-right: 20px !important;
