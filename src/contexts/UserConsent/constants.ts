@@ -1,7 +1,7 @@
 import defaultI18n from '../../utils/i18n.json'
 
-import { buildDefaultVendorStatus } from '../../components/CMP/utils'
 import { Purposes, Vendors } from '../../components/CMP/constants'
+import { buildDefaultVendorStatus } from '../../components/CMP/utils'
 
 import type { ContextType } from './types'
 
@@ -131,8 +131,8 @@ const EmbedVendors = {
         vendor: Vendors.Flowplayer,
         regex: {
             html: /flowplayer-embed-container/i,
-            // TODO: Check the vendor reponsible for lwcdn ( duplicate in You Player)
-            script: /\/\/ljsp\.lwcdn\.com\/api\/video\/embed\.jsp/i
+            script: /cdn\.flowplayer\.com\/players/i,
+            cdn: /\/\/ljsp\.lwcdn\.com\/api\/video\/embed\.jsp/i
         }
     },
     GoogleForms: {
@@ -199,12 +199,7 @@ const EmbedVendors = {
     },
     ShowheroesSE: {
         vendor: Vendors.ShowheroesSE,
-        regex: {
-            html: /flowplayer-embed-container/i,
-            // TODO: Check the vendor reponsible for lwcdn ( duplicate in Flow Player)
-            lwCDNScript: /\/\/ljsp\.lwcdn\.com\/api\/video\/embed\.jsp/i,
-            youplayScript: /https:\/\/delivery\.youplay\.se\/load\.js/i
-        }
+        regex: { script: /https:\/\/delivery\.youplay\.se\/load\.js/i }
     }
 }
 
