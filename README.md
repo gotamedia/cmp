@@ -7,7 +7,7 @@ A CMP package dedicated to be used in React + Fluffy applications
 npm i @gotamedia/cmp
 ```
 
-## Peer dependencies
+### Peer dependencies
 CMP requires that you install following depdencies in your own project
 ```sh
 npm i react
@@ -38,7 +38,26 @@ To start run:
 npm start
 ```
 
-***In order to see Didomi consent notice you need to be in an alias different than `localhost`***
+***In case you can't see the Didomi consent notice then try to be in an alias different than `localhost`***
+
+## Build
+
+CMP uses Rollup to build and bundle
+```sh
+npm run build
+```
+
+## Publish
+
+To inspect the package before publishing to npm
+```sh
+npm run package:details
+```
+
+To publish to npm
+```sh
+npm run package:publish
+```
 
 ## Develop with CMP
 
@@ -73,24 +92,26 @@ This will make sure to remove the link from your project's dependencies and reve
 
 [Read more about yalc](https://www.npmjs.com/package/yalc)
 
-## Build
+## Release
 
-CMP uses Rollup to build and bundle
-```sh
-npm run build
-```
+### Package
+* Commit all your changes with messages follows Conventional commits
+* Merge all your changes to trunk branch
+* Push to remote
 
-## Publish
+That's it 🎉 
+You just trigered a release action and Github will take care of the rest 🙃 
 
-To inspect the package before publishing to npm
-```sh
-npm run package:details
-```
+This will run build workflow in Github Actions and once it's successfully done it will trigger a publish workflow to publish the package to NPM registery.
 
-To publish to npm
-```sh
-npm run package:publish
-```
+### Docs
+* Navigate to Github Actions on the repo page
+* Click on `Storybook - Build & Deploy` on the left sidebar
+* Click on the menue `Run workflow` on the top right
+* Choose the env to build and deploy the Docs to ***"available dev & prod"***
+* Click on `Run workflow` button
+
+This will run Storybook Docs build and once it's successfully done it will trigger a deploy to S3 and revalidate all the files in the associated CloudFront.
 
 ## CMP Development & Contributing
 
