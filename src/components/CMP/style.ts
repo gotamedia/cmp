@@ -18,6 +18,10 @@ const scrollMoreStyle = css`
 const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
     #didomi-host {
         * {
+            &:not(a) {
+                text-decoration: none !important;
+            }
+            
             -webkit-font-smoothing: auto !important;
 
             ${({ fontFamily }) => fontFamily && css`
