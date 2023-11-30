@@ -4,9 +4,18 @@ export { default as CMP } from './components/CMP'
 export * from './components/CMPR'
 export { default as CMPR } from './components/CMPR'
 
+export {
+    DidomiSDK,
+    type IDidomiObject,
+    type OnConsentChangedFunction,
+    type OnPreferencesClickPurposeFunction,
+    type OnPreferencesClickVendorFunction,
+    type OnReadyFunction,
+} from '@didomi/react'
+
 // Contexts
-export * from './contexts/UserConsent'
-export { default as Provider} from './contexts/UserConsent'
+export * from './contexts/Consent'
+export { default as Context} from './contexts/Consent'
 
 // Hooks
 export { default as useCanUseVendor } from './hooks/useCanUseVendor'

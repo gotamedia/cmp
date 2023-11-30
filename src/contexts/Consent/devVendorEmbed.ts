@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 const invalidEmbedVendors = {
     Apple: {
         scope: 'kb,nsk',
@@ -40,6 +41,7 @@ enum Vendors {
     BeeswaxIOCorporation = 12,
     BidSwitch = 128,
     BidTheatreAB = 30,
+    BonnierNews = 'c:bonnierne-rRkEgPtY',
     ChartBeat = "c:chartbeat",
     CrazyEgg = "c:crazy-egg",
     CriteoSA = 91,
@@ -145,8 +147,10 @@ const EmbedVendors = {
     },
     Facebook: {
         vendor: Vendors.Facebook,
-        regex: { },
-        html: []
+        regex: { iframeSrc: /facebook\.com\/plugins\/(post|likebox)\.php\?/i },
+        html: [
+            '<iframe src="//www.facebook.com/plugins/likebox.php?href= https://www.facebook.com/Birgitta-och-Evalds-Ekologiska-Naturbetesdjur-730414083755507/?ref=page_internal /%3Ffref%3Dts&amp;width=400&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:590px;" allowTransparency="true"></iframe>'
+        ]
     },
     Flourish: {
         vendor: Vendors.Flourish,
@@ -570,7 +574,9 @@ for (const [vendor, { regex }] of Object.entries(EmbedVendors)) {
         const content = html.match(pattern)
         if (!content) continue
 
+        // @ts-ignore
         results[vendor] = {
+            // @ts-ignore
             ...(results[vendor] || {}),
             [key]: { content: content[0] }
         }

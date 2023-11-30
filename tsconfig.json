@@ -35,6 +35,6 @@
         "node_modules",
         "dist",
         "rollup.config.js",
-        "src/contexts/UserConsent/devVendorEmbed.ts"
+        "src/contexts/Consent/devVendorEmbed.ts"
     ]
 }

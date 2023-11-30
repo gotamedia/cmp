@@ -18,15 +18,18 @@ npm i react
 
 ## Usage
 ```tsx
-import CMP, { Provider } from '@gotamedia/cmp'
+import { createRoot } from 'react-dom/client'
+import { CMP } from '@gotamedia/cmp'
 
-const App = () => (
-    <Provider>
-        <CMP {...CMP_PROPS}/>
-
-        {...}
-    </Provider>
+const Component = () => (
+    <CMP {...CMP_PROPS}>
+        <App />
+    </CMP>
 )
+
+const root = createRoot(document.getElementById('app'))
+
+root.render(<Component />)
 ```
 
 ## Develop in CMP

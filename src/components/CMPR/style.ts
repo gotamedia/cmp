@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
     Button,
     ButtonVariants,
     ButtonVariantTypes
 } from '@gotamedia/fluffy'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ fontFamily?: string }>`
     width: 100%;
     background: #F5F5F5;
     border: 1px solid;
@@ -13,6 +13,10 @@ const Wrapper = styled.div`
     border-radius: 4px;
     display: inline-block;
     margin: 8px 0;
+
+    ${({ fontFamily }) => fontFamily && css`
+        font-family: ${fontFamily};
+    `}
 `
 
 const InnerWrapper = styled.div`
@@ -28,6 +32,7 @@ const InnerWrapper = styled.div`
 const Headline = styled.h1`
     margin: auto 0;
     padding: 0;
+    font-weight: 600;
     line-height: 16px;
     font-size: 14px;
     font-family: ${({ theme }) => theme.fonts.generic[4]};

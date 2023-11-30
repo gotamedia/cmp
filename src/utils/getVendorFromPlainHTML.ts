@@ -1,4 +1,4 @@
-import { EmbedVendors } from "../contexts/UserConsent"
+import { EmbedVendors } from '../components/CMP'
 
 const getVendorFromPlainHTML = (html: string) => {
     for (const vendorValues of Object.values(EmbedVendors)) {

@@ -13,6 +13,7 @@ const CMPR: Types.CMPRType = forwardRef((props, ref) => {
 
     const {
         i18n,
+        config,
         didUserApprove,
         approveVendor,
         openCookiesSettings
@@ -26,9 +27,12 @@ const CMPR: Types.CMPRType = forwardRef((props, ref) => {
         return children
     }
 
+    const fontFamily = config?.theme?.font
+
     return (
         <Styled.Wrapper
             ref={ref}
+            fontFamily={fontFamily}
             {...filteredProps}
         >
             <Styled.InnerWrapper>

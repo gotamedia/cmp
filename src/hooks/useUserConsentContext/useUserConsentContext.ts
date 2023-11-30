@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { Context } from '../../contexts/UserConsent'
+import Context from '../../contexts/Consent'
 
 const useUserConsentContext = () => useContext(Context)
 

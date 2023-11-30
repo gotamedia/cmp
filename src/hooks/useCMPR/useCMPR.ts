@@ -9,6 +9,7 @@ import type * as Types from './types'
 
 const useCMPR: Types.UseCMPR = (vendor) => {
     const {
+        config,
         i18n: {
             restriction: {
                 headline,
@@ -32,11 +33,12 @@ const useCMPR: Types.UseCMPR = (vendor) => {
     }, [approveVendorConsent, vendorStatus])
 
     const openCookiesSettings = useCallback(() => {
-        window.Didomi.notice.show()
+        window?.Didomi?.notice?.show?.()
     }, [])
 
     const results = useMemo(() => {
         return ({
+            config: config,
             i18n: {
                 headline,
                 description: subheadline.replace('{VENDOR}', (vendorStatus?.name || '')),
@@ -48,6 +50,7 @@ const useCMPR: Types.UseCMPR = (vendor) => {
             openCookiesSettings: openCookiesSettings
         })
     }, [
+        config,
         headline,
         approveButton,
         cookieSettingButton,

@@ -4,6 +4,11 @@ import { hasIntersection } from '../../utils/array'
 
 import type { VendorConsentStatus } from './types'
 
+const DEFAULT_COOKIES_TO_KEEP = [
+    'euconsent-v2',
+    'didomi_token'
+]
+
 const buildDefaultVendorStatus = (vendors: object):Record<string, VendorConsentStatus> => (
     Object.values(vendors)
         .reduce((acc, vendorId) => ({
@@ -49,16 +54,15 @@ const deleteClientCookie = (name: string, domain?: string, path?: string) => {
 }
 
 const clearCookiesOnConsentChange = (cookiesToKeep: string[]) => {
-    const DEFAULT_COOKIES_TO_KEEP = [
-        'euconsent-v2',
-        'didomi_token',
+    const extendedCookiesToKeep = [
+        ...DEFAULT_COOKIES_TO_KEEP,
         ...cookiesToKeep
     ]
 
     const cookiesToDelete = document.cookie
         .split(";")
         .map((cookie) => cookie.split("=")[0].trim())
-        .filter((cookieName) => DEFAULT_COOKIES_TO_KEEP.indexOf(cookieName) === -1)
+        .filter((cookieName) => extendedCookiesToKeep.indexOf(cookieName) === -1)
 
     cookiesToDelete.forEach((cookieToDelete) => {
         const domains = (`.#${document.location.host.replaceAll(".", "#.#")}`).split("#")
@@ -75,7 +79,7 @@ const clearCookiesOnConsentChange = (cookiesToKeep: string[]) => {
     })
 
     const localStorageItemsToDelete = Object.keys(window.localStorage)
-        .filter((localStorageItemName) => DEFAULT_COOKIES_TO_KEEP.indexOf(localStorageItemName) === -1)
+        .filter((localStorageItemName) => extendedCookiesToKeep.indexOf(localStorageItemName) === -1)
 
     localStorageItemsToDelete.forEach((localStorageItemName) => {
         window.localStorage.removeItem(localStorageItemName)

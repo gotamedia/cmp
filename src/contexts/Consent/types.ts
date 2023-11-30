@@ -3,6 +3,8 @@ import type {
     PropsWithChildren
 } from 'react'
 
+import { IDidomiConfig } from '@didomi/react'
+
 import type {
     Purposes,
     Vendors,
@@ -19,11 +21,14 @@ type ContextType = {
     status: Record<string, VendorConsentStatus>
     approveVendorConsent(params: { vendor: Vendors, purposes: string[] }): void,
     i18n: typeof defaultI18n,
-    _setUserConsent: (value: any) => void
+    config: IDidomiConfig
 }
 
 type ProviderType = FC<PropsWithChildren<{
-    i18n?: typeof defaultI18n
+    i18n?: typeof defaultI18n,
+    config?: IDidomiConfig,
+    cleanUpCookies?: boolean,
+    cookiesToKeep?: string[]
 }>>
 
 export type {
