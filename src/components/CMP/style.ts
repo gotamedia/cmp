@@ -429,8 +429,10 @@ const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
                     color: ${({ theme }) => theme.colors.brand} !important;
                     background-color: white !important;
 
-                    &:hover {
-                        background-color: ${({ theme }) => Polished.tint(0.88, theme.colors.brand)} !important;
+                    &:not(:disabled) {
+                        &:hover {
+                            background-color: ${({ theme }) => Polished.tint(0.88, theme.colors.brand)} !important;
+                        }
                     }
                 }
 
@@ -440,9 +442,11 @@ const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
                     color: white !important;
                     background-color: ${({ theme }) => theme.colors.brand} !important;
 
-                    &:hover {
-                        color: white;
-                        background-color: ${({ theme }) => Polished.shade(0.08, theme.colors.brand)} !important;
+                    &:not(:disabled) {
+                        &:hover {
+                            color: white;
+                            background-color: ${({ theme }) => Polished.shade(0.08, theme.colors.brand)} !important;
+                        }
                     }
                 }
             }
@@ -513,8 +517,16 @@ const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
                         padding: 0 !important;
                         font-weight: 400 !important;
 
-                        &:hover {
-                            background-color: #dedede !important;
+                        &:not(:disabled) {
+                            &:hover {
+                                background-color: #dedede !important;
+                            }
+    
+                            &--selected {
+                                &:hover {
+                                    background-color: #757575 !important;
+                                }
+                            }
                         }
 
                         &:first-child {

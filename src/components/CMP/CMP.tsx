@@ -1,17 +1,18 @@
 import {
+    useState,
     useRef,
-    useMemo,
-    useCallback
+    useCallback,
+    useMemo
 } from 'react'
-import { useIsomorphicLayoutEffect } from '@gotamedia/fluffy'
 import { DidomiSDK } from '@didomi/react'
 import type {
     IUserStatus,
     OnReadyFunction
 } from '@didomi/react'
 
-import { DEFAULT_USER_CONSENT } from '../../contexts/UserConsent'
-import useUserConsentContext from '../../hooks/useUserConsentContext/useUserConsentContext'
+import Context from '../../contexts/Consent'
+
+import defaultI18n from '../../utils/i18n.json'
 
 import * as Constants from './constants'
 import * as Styled from './style'
@@ -26,13 +27,13 @@ const filterPurposes = (purpose: Constants.Purposes) => purposesSet.has(purpose)
 
 const CMP: Types.CMPType = (props) => {
     const {
-        apiKey,
-        noticeId,
-        sdkPath,
-        config,
+        disabled = false,
         iabVersion = 2,
-        cleanUpCookies = true,
+        i18n = defaultI18n,
         cookiesToKeep = [],
+        cleanUpCookies = true,
+        config,
+        children,
         onReady,
         onConsentChanged,
         onNoticeShown,
@@ -41,25 +42,8 @@ const CMP: Types.CMPType = (props) => {
     } = props
     
     const cache = useRef<{ userStatus?: IUserStatus }>({ userStatus: undefined })
-
-    const {
-        i18n,
-        shouldRemoveCookies,
-        _setUserConsent
-    } = useUserConsentContext()
-
-    useIsomorphicLayoutEffect(() => {
-        if (cleanUpCookies && shouldRemoveCookies) {
-            Utils.clearCookiesOnConsentChange(cookiesToKeep)
-        }
-    }, [cleanUpCookies, shouldRemoveCookies])
-
-    const _config = useMemo(() => {
-        return {
-            ...Constants.DEFAULT_CONSENT_CONFIG,
-            ...config
-        }
-    }, [config])
+    
+    const [userConsent, setUserConsent] = useState({ ...Constants.DEFAULT_USER_CONSENT })
 
     const handleOnReady = useCallback<OnReadyFunction>((didomi) => {
         const userStatus = didomi.getUserStatus()
@@ -68,13 +52,17 @@ const CMP: Types.CMPType = (props) => {
         const shouldRemoveCookies = Utils.shouldRemoveCookies({ prevUserStatus: cache?.current?.userStatus, userStatus })
         cache.current.userStatus = userStatus
 
+        if (cleanUpCookies && shouldRemoveCookies) {
+            Utils.clearCookiesOnConsentChange(cookiesToKeep)
+        }
+
         const userConsentStatus = {
             vendorsEnabled: userStatus.vendors.consent.enabled.filter(filterVendors) as Constants.Vendors[],
             purposesEnabled: userStatus.purposes.consent.enabled.filter(filterPurposes) as Constants.Purposes[],
             vendorsDisabled: userStatus.vendors.consent.disabled.filter(filterVendors) as Constants.Vendors[],
             purposesDisabled: userStatus.purposes.consent.disabled.filter(filterPurposes) as Constants.Purposes[]
         }
-
+        
         const status: Record<string, Types.VendorConsentStatus> = allVendors
             .filter(({ id }) => filterVendors(id))
             .reduce((acc, vendor) => {
@@ -95,10 +83,10 @@ const CMP: Types.CMPType = (props) => {
             }, {})
 
         const updatedUserConsent = {
-            ...DEFAULT_USER_CONSENT,
+            ...Constants.DEFAULT_USER_CONSENT,
             shouldRemoveCookies,
             status: {
-                ...DEFAULT_USER_CONSENT.status,
+                ...Constants.DEFAULT_USER_CONSENT.status,
                 ...status
             },
             isReady: true
@@ -110,10 +98,15 @@ const CMP: Types.CMPType = (props) => {
         userConsentStatus.vendorsDisabled.forEach((vendor) => { updatedUserConsent.vendors[vendor] = false })
         userConsentStatus.purposesDisabled.forEach((purpose) => { updatedUserConsent.purposes[purpose] = false })
 
-        _setUserConsent(updatedUserConsent)
+        setUserConsent(updatedUserConsent)
 
         onReady?.(didomi)
-    }, [_setUserConsent, i18n.vendors, onReady])
+    }, [
+        cleanUpCookies,
+        cookiesToKeep,
+        i18n.vendors,
+        onReady
+    ])
 
     const handleOnConsentChanged = useCallback((value: any) => {
         onConsentChanged?.(value)
@@ -142,27 +135,51 @@ const CMP: Types.CMPType = (props) => {
         onNoticeClickMoreInfo?.()
     }, [onNoticeClickMoreInfo])
 
-    const fontFamily = _config?.theme?.font
+    const context = useMemo(() => {
+        return {
+            ...userConsent,
+            config: {
+                ...userConsent.config,
+                ...config
+            },
+            i18n: {
+                ...userConsent.i18n,
+                ...i18n
+            }
+        }
+    }, [
+        config,
+        i18n,
+        userConsent
+    ])
+
+    const fontFamily = config?.theme?.font
 
     return (
-        <>
+        <Context.Provider value={context}>
             <Styled.ConsentStyle fontFamily={fontFamily} />
 
-            <DidomiSDK
-                embedTCFStub
-                gdprAppliesGlobally
-                apiKey={apiKey}
-                noticeId={noticeId}
-                iabVersion={Number(iabVersion)}
-                sdkPath={sdkPath}
-                config={_config}
-                onReady={handleOnReady}
-                onConsentChanged={handleOnConsentChanged}
-                onNoticeShown={handleOnNoticeShown}
-                onNoticeClickMoreInfo={handleOnNoticeClickMoreInfo}
-                {...filteredProps}
-            />
-        </>
+            {
+                !disabled ? (
+                    <DidomiSDK
+                        embedTCFStub
+                        gdprAppliesGlobally
+                        config={config}
+                        iabVersion={Number(iabVersion)}
+                        onReady={handleOnReady}
+                        onConsentChanged={handleOnConsentChanged}
+                        onNoticeShown={handleOnNoticeShown}
+                        onNoticeClickMoreInfo={handleOnNoticeClickMoreInfo}
+                        {...filteredProps}
+                    />
+                ) : (
+                    null
+                )
+            }
+
+
+            {children}
+        </Context.Provider>
     )
 }
 

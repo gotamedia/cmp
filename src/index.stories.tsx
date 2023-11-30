@@ -9,13 +9,13 @@ import Textarea from '@gotamedia/fluffy/Textarea'
 import { ThemeProvider } from '@gotamedia/fluffy/ThemeContext'
 import { StoryFn } from '@storybook/react'
 
-import Provider from './contexts/UserConsent'
-import CMPRComponent from './components/CMPR'
-import { CMPRProps } from './components/CMPR/types'
-import CMPComponent, {
-    DEFAULT_CONSENT_CONFIG,
-    Vendors
-} from './components/CMP'
+import {
+    CMP as CMPComponent,
+    CMPR as CMPRComponent,
+    CMPRProps,
+    Vendors,
+    DEFAULT_CONSENT_CONFIG
+} from './'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -67,41 +67,39 @@ const Template = ({ brandColor, children, ...filteredProps }: any) => {
     }, [])
 
     return (
-        <Provider>
-            <ThemeProvider theme={theme}>
-                <Wrapper>
-                    <StyledButton onClick={handleOnShowNoticeClick}>
-                        {'Show Notice'}
-                    </StyledButton>
+        <ThemeProvider theme={theme}>
+            <Wrapper>
+                <StyledButton onClick={handleOnShowNoticeClick}>
+                    {'Show Notice'}
+                </StyledButton>
 
-                    <StyledButton onClick={handleOnShowPurposesClick}>
-                        {'Show Purposes'}
-                    </StyledButton>
+                <StyledButton onClick={handleOnShowPurposesClick}>
+                    {'Show Purposes'}
+                </StyledButton>
 
-                    <StyledButton onClick={handleOnShowVendorsClick}>
-                        {'Show Vendors'}
-                    </StyledButton>
+                <StyledButton onClick={handleOnShowVendorsClick}>
+                    {'Show Vendors'}
+                </StyledButton>
 
-                    <StyledButton onClick={handleOnReset}>
-                        {'Reset'}
-                    </StyledButton>
+                <StyledButton onClick={handleOnReset}>
+                    {'Reset'}
+                </StyledButton>
 
-                    <CMPComponent
-                        key={[
-                            brandColor,
-                            JSON.stringify(filteredProps.config),
-                            filteredProps.apiKey,
-                            filteredProps.noticeId,
-                            filteredProps.iabVersion,
-                            filteredProps.sdkPath,
-                        ].join('-')}
-                        {...filteredProps}
-                    />
-
+                <CMPComponent
+                    key={[
+                        brandColor,
+                        JSON.stringify(filteredProps.config),
+                        filteredProps.apiKey,
+                        filteredProps.noticeId,
+                        filteredProps.iabVersion,
+                        filteredProps.sdkPath,
+                    ].join('-')}
+                    {...filteredProps}
+                >
                     {children}
-                </Wrapper>
-            </ThemeProvider>
-        </Provider>
+                </CMPComponent>
+            </Wrapper>
+        </ThemeProvider>
     )
 }
 
@@ -115,7 +113,7 @@ export const CMP = (props: any) => {
 
 export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
     const [showConsent, setShowConsent] = useState(false)
-    const [noticeContent, setNoticeContent] = useState(DEFAULT_CONSENT_CONFIG.notice.content.popup.sv)
+    const [noticeContent, setNoticeContent] = useState('🍪 Test consent notice content 🍪')
 
     const _config = useMemo(() => {
         return {
@@ -152,36 +150,34 @@ export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
     }
 
     return (
-        <Provider>
-            <ThemeProvider theme={theme}>
-                <Wrapper>
-                    <StyledTextarea
-                        value={noticeContent}
-                        onValueChange={setNoticeContent}
-                    />
+        <ThemeProvider theme={theme}>
+            <Wrapper>
+                <StyledTextarea
+                    value={noticeContent}
+                    onValueChange={setNoticeContent}
+                />
 
-                    <StyledButton onClick={handleShowConsent}>
-                        {'Show Notice'}
-                    </StyledButton>
+                <StyledButton onClick={handleShowConsent}>
+                    {'Show Notice'}
+                </StyledButton>
 
-                    <StyledButton onClick={handleOnReset}>
-                        {'Reset'}
-                    </StyledButton>
+                <StyledButton onClick={handleOnReset}>
+                    {'Reset'}
+                </StyledButton>
 
-                    {
-                        showConsent ? (
-                            <CMPComponent
-                                {...filteredProps}
-                                config={_config}
-                            />
-                        ) : (
-                            null
-                        )
-                    }
+                {
+                    showConsent ? (
+                        <CMPComponent
+                            {...filteredProps}
+                            config={_config}
+                        />
+                    ) : (
+                        null
+                    )
+                }
 
-                </Wrapper>
-            </ThemeProvider>
-        </Provider>
+            </Wrapper>
+        </ThemeProvider>
     )
 }
 

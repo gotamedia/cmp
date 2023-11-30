@@ -1,11 +1,17 @@
-import type { FC } from 'react'
-import {
+import type {
+    FC,
+    ReactNode
+} from 'react'
+
+import type {
     IDidomiConfig,
     OnReadyFunction,
     OnConsentChangedFunction,
     OnPreferencesClickPurposeFunction,
-    OnPreferencesClickVendorFunction
+    OnPreferencesClickVendorFunction,
 } from '@didomi/react'
+
+import defaultI18n from '../../utils/i18n.json'
 
 import type {
     Purposes,
@@ -15,11 +21,16 @@ import type {
 type CMPProps = {
     apiKey: string,
     noticeId: string,
+    children: ReactNode,
+    disabled?: boolean
+    i18n?: typeof defaultI18n,
+    config?: IDidomiConfig,
     cleanUpCookies?: boolean,
-    cookiesToKeep?: string[],
+    cookiesToKeep?: string[]
+    embedTCFStub?: boolean,
+    gdprAppliesGlobally?: boolean,
     iabVersion?: number, 
     sdkPath?: string,
-    config?: IDidomiConfig,
     onReady?: OnReadyFunction,
     onConsentChanged?: OnConsentChangedFunction,
     onNoticeShown?: () => void,
