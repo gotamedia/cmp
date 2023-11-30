@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/gotamedia/cmp/compare/v1.0.1...v1.1.0) (2023-11-30)
+
+
+### Features
+
+* Merged UserConsent context provider with CMP component and updated Facebook vendor regex ([4efbd42](https://github.com/gotamedia/cmp/commit/4efbd429838cd6f981767bb8725b204c93b7a873))
+
 ## [1.0.1](https://github.com/gotamedia/cmp/compare/v1.0.0...v1.0.1) (2023-11-28)
 
 
