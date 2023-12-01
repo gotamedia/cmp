@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/gotamedia/cmp/compare/v1.1.0...v1.2.0) (2023-12-01)
+
+
+### Features
+
+* Renamed "useUserConsentContext" hook to "useCMP" and extended it with a flag "didUserConsent" to check if user has consented or not. ([83f56f1](https://github.com/gotamedia/cmp/commit/83f56f12e3a97b76dc9f1e5231998de0058ee6cd))
+
+
+### Bug Fixes
+
+* **style:** Fixed buttons font size. ([69688cf](https://github.com/gotamedia/cmp/commit/69688cf66f40a20cbaa2cfb8d3b0b2a3934855f7))
+
 ## [1.1.0](https://github.com/gotamedia/cmp/compare/v1.0.1...v1.1.0) (2023-11-30)
 
 
