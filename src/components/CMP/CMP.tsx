@@ -89,7 +89,8 @@ const CMP: Types.CMPType = (props) => {
                 ...Constants.DEFAULT_USER_CONSENT.status,
                 ...status
             },
-            isReady: true
+            isReady: true,
+            didUserConsent: !window.Didomi.shouldConsentBeCollected()
         }
 
         userConsentStatus.vendorsEnabled.forEach((vendor) => { updatedUserConsent.vendors[vendor] = true })

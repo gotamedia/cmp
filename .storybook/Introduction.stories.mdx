@@ -29,15 +29,18 @@ npm i react
 
 ## Usage
 ```tsx
-import CMP, { Provider } from '@gotamedia/cmp'
+import { createRoot } from 'react-dom/client'
+import { CMP } from '@gotamedia/cmp'
 
-const App = () => (
-    <Provider>
-        <CMP {...CMP_PROPS}/>
-
-        {...}
-    </Provider>
+const Component = () => (
+    <CMP {...CMP_PROPS}>
+        <App />
+    </CMP>
 )
+
+const root = createRoot(document.getElementById('app'))
+
+root.render(<Component />)
 ```
 
 ## Develop in CMP
@@ -115,14 +118,14 @@ You just trigered a release action and Github will take care of the rest 🙃
 
 This will run build workflow in Github Actions and once it's successfully done it will trigger a publish workflow to publish the package to NPM registery.
 
-### DOCs
+### Docs
 * Navigate to Github Actions on the repo page
 * Click on `Storybook - Build & Deploy` on the left sidebar
 * Click on the menue `Run workflow` on the top right
-* Choose the env to build and deploy the DOCs to ***"available dev & prod"***
+* Choose the env to build and deploy the Docs to ***"available dev & prod"***
 * Click on `Run workflow` button
 
-This will run Storybook DOCs build and once it's successfully done it will trigger a deploy to S3 and revalidate all the files in the associated CloudFront.
+This will run Storybook Docs build and once it's successfully done it will trigger a deploy to S3 and revalidate all the files in the associated CloudFront.
 
 ## CMP Development & Contributing
 

@@ -3,12 +3,15 @@ import {
     Purposes
 } from '../../components/CMP'
 
-import useUserConsentContext from '../useUserConsentContext/useUserConsentContext'
+import useCMP from '../useCMP'
 
 import type * as Types from './types'
 
 const useUserConsent: Types.UseUserConsent = (items) => {
-    const userConsent = useUserConsentContext()
+    const {
+        vendors,
+        purposes
+    } = useCMP()
 
     if (Array.isArray(items) && items.length) {
         const consents: { [k in (Vendors | Purposes)]: boolean | undefined } = {} as any
@@ -16,7 +19,7 @@ const useUserConsent: Types.UseUserConsent = (items) => {
         items.forEach((item) => {
             if (Object.values(Vendors).includes(item as Vendors)) {
                 // @ts-ignore
-                consents[item] = userConsent.vendors[item]
+                consents[item] = vendors[item]
             }
 
             if (Object.values(Purposes).includes(item as Purposes)) {
@@ -24,7 +27,7 @@ const useUserConsent: Types.UseUserConsent = (items) => {
                     consents[item] = true
                 } else {
                     // @ts-ignore
-                    consents[item] = userConsent.purposes[item]
+                    consents[item] = purposes[item]
                 }
             }
         })
@@ -33,8 +36,8 @@ const useUserConsent: Types.UseUserConsent = (items) => {
     }
 
     return {
-        ...userConsent.vendors,
-        ...userConsent.purposes
+        ...vendors,
+        ...purposes
     }
 }
 

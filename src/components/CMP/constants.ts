@@ -231,6 +231,7 @@ export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
 export const DEFAULT_USER_CONSENT: ContextType = {
     isReady: false,
     shouldRemoveCookies: false,
+    didUserConsent: false,
     vendors: {
         [Vendors.AdformAS]: undefined,
         [Vendors.AdnamiAps]: undefined,

@@ -3,7 +3,7 @@ import {
     useMemo
 } from 'react'
 
-import useUserConsentContext from '../../hooks/useUserConsentContext'
+import useUserConsentContext from '../useCMP'
 
 import type * as Types from './types'
 
