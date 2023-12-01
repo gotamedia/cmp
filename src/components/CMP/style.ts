@@ -452,6 +452,11 @@ const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
             }
 
             &-components {
+                &-button {
+                    font-size: 16px !important;
+                    font-weight: 400 !important;
+                }
+
                 &-accordion {
                     ${themeHelpers.isMediumDevice(css`
                         width: unset !important;

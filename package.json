@@ -6,7 +6,8 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "files": [
-    "dist"
+    "dist",
+    "./CHANGELOG.md"
   ],
   "scripts": {
     "start": "storybook dev -p 6006",
@@ -38,7 +39,6 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/manager-api": "^7.5.3",

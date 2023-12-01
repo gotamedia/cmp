@@ -9,7 +9,7 @@ import type {
 } from '../../components/CMP'
 
 import useConsent from '../useConsent'
-import useUserConsentContext from '../useUserConsentContext/useUserConsentContext'
+import useCMP from '../useCMP'
 
 import type * as Types from './types'
 
@@ -17,7 +17,7 @@ const useCanUseVendor: Types.UseVendor = (vendor) => {
     const [consentsToCheck, setConsentsToCheck] = useState<(Vendors | Purposes)[]>()
 
     const consent = useConsent(consentsToCheck)
-    const { isReady } = useUserConsentContext()
+    const { isReady } = useCMP()
 
     useEffect(() => {
         if (isReady) {

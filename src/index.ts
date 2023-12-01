@@ -21,7 +21,7 @@ export { default as Context} from './contexts/Consent'
 export { default as useCanUseVendor } from './hooks/useCanUseVendor'
 export { default as useConsent } from './hooks/useConsent'
 export { default as useUserConsent } from './hooks/useUserConsent'
-export { default as useUserConsentContext } from './hooks/useUserConsentContext'
+export { default as useCMP } from './hooks/useCMP'
 export { default as useCMPR } from './hooks/useCMPR'
 
 // Utils
