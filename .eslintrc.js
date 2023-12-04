@@ -8,7 +8,10 @@ module.exports = {
         'eslint:recommended',
         'plugin:react-hooks/recommended',
         'plugin:storybook/recommended',
+        'plugin:import/typescript',
+        'plugin:import/recommended',
         'plugin:@stylistic/recommended-extends',
+        './eslint/import.js',
         './eslint/reactHooks.js',
         './eslint/stylistic.js',
         './eslint/typescript.js',
@@ -25,6 +28,7 @@ module.exports = {
         'react',
         'react-hooks',
         '@typescript-eslint',
+        'import',
         '@stylistic',
     ],
     rules: {
