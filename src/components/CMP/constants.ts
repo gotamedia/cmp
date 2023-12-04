@@ -1,9 +1,10 @@
+import { buildDefaultVendorStatus } from '@components/CMP/utils'
+
+import type { ContextType } from '@contexts/Consent'
+
 import defaultI18n from '../../utils/i18n.json'
 
-import type { ContextType } from '../../contexts/Consent'
-
-import { buildDefaultVendorStatus } from '../../components/CMP/utils'
-import { IDidomiConfig } from '@didomi/react'
+import type { IDidomiConfig } from '@didomi/react'
 
 export enum Vendors {
     AdformAS = 50,
@@ -107,7 +108,10 @@ export const EmbedVendors = {
     },
     Facebook: {
         vendor: Vendors.Facebook,
-        regex: { iframeSrc: /facebook\.com\/plugins\/(post|likebox)\.php\?/i }
+        regex: {
+            iframeSrc: /facebook\.com\/plugins\/(post|likebox)\.php\?/i,
+            script: /\/\/connect\.facebook\.net/i,
+        },
     },
     Flourish: {
         vendor: Vendors.Flourish,
