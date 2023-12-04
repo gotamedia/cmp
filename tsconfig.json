@@ -24,16 +24,20 @@
             }
         ],
         "paths": {
-            "@/*": ["./*"]
+            "@/*": [
+                "./*"
+            ]
         }
     },
     "include": [
         "**/*.ts",
-        "**/*.tsx"
+        "**/*.tsx",
+        "eslint",
+        ".eslintrc.js"
     ],
     "exclude": [
-        "node_modules",
-        "dist",
+        "**/node_modules/**",
+        "**/dist/**",
         "rollup.config.js",
         "src/contexts/Consent/devVendorEmbed.ts"
     ]
