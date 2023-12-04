@@ -1,15 +1,12 @@
 import {
     useState,
-    useEffect
+    useEffect,
 } from 'react'
 
-import type {
-    Vendors,
-    Purposes
-} from '../../components/CMP'
+import type { Vendors, Purposes } from '@components/CMP'
 
-import useConsent from '../useConsent'
-import useCMP from '../useCMP'
+import useCMP from '@hooks/useCMP'
+import useConsent from '@hooks/useConsent'
 
 import type * as Types from './types'
 
@@ -26,7 +23,7 @@ const useCanUseVendor: Types.UseVendor = (vendor) => {
             if (purposes) {
                 setConsentsToCheck([
                     vendor,
-                    ...purposes
+                    ...purposes,
                 ])
             }
         }

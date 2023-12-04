@@ -1,8 +1,8 @@
+import { themeHelpers, Polished } from '@gotamedia/fluffy'
 import {
     css,
-    createGlobalStyle
+    createGlobalStyle,
 } from 'styled-components'
-import { themeHelpers, Polished } from '@gotamedia/fluffy'
 
 const scrollMoreStyle = css`
     background: linear-gradient(#ffffff 33%, rgba(255,255,255, 0)),

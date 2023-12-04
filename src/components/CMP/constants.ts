@@ -1,10 +1,10 @@
+import type { IDidomiConfig } from '@didomi/react'
+
 import { buildDefaultVendorStatus } from '@components/CMP/utils'
 
 import type { ContextType } from '@contexts/Consent'
 
 import defaultI18n from '../../utils/i18n.json'
-
-import type { IDidomiConfig } from '@didomi/react'
 
 export enum Vendors {
     AdformAS = 50,

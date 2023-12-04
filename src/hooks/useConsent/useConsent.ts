@@ -1,9 +1,6 @@
-import useUserConsent from '../useUserConsent/useUserConsent'
+import useUserConsent from '@hooks/useUserConsent'
 
-import {
-    every,
-    some
-} from '../../utils/array'
+import { every, some } from '@utils/array'
 
 import type * as Types from './types'
 

@@ -1,51 +1,49 @@
 import type {
-    FC,
-    ReactNode
-} from 'react'
-
-import type {
     IDidomiConfig,
     OnReadyFunction,
     OnConsentChangedFunction,
     OnPreferencesClickPurposeFunction,
     OnPreferencesClickVendorFunction,
 } from '@didomi/react'
-
-import defaultI18n from '../../utils/i18n.json'
+import type {
+    FC,
+    ReactNode,
+} from 'react'
 
 import type {
     Purposes,
     Vendors,
 } from './constants'
+import type defaultI18n from '../../utils/i18n.json'
 
 type CMPProps = {
-    apiKey: string,
-    noticeId: string,
-    children: ReactNode,
+    apiKey: string
+    noticeId: string
+    children: ReactNode
     disabled?: boolean
-    i18n?: typeof defaultI18n,
-    config?: IDidomiConfig,
-    cleanUpCookies?: boolean,
+    i18n?: typeof defaultI18n
+    config?: IDidomiConfig
+    cleanUpCookies?: boolean
     cookiesToKeep?: string[]
-    embedTCFStub?: boolean,
-    gdprAppliesGlobally?: boolean,
-    iabVersion?: number, 
-    sdkPath?: string,
-    onReady?: OnReadyFunction,
-    onConsentChanged?: OnConsentChangedFunction,
-    onNoticeShown?: () => void,
-    onNoticeHidden?: () => void,
-    onNoticeBackdropclick?: () => void,
-    onNoticeClickAgree?: () => void,
-    onNoticeClickMoreInfo?: () => void,
-    onPreferencesClickAgreeToAll?: () => void,
-    onPreferencesClickDisagreeToAll?: () => void,
-    onPreferencesClickPurposeAgree?: OnPreferencesClickPurposeFunction,
-    onPreferencesClickPurposeDisagree?: OnPreferencesClickPurposeFunction,
-    onPreferencesClickViewVendors?: () => void,
-    onPreferencesClickSaveChoices?: () => void,
-    onPreferencesClickVendorAgree?: OnPreferencesClickVendorFunction,
-    onPreferencesClickVendorDisagree?: OnPreferencesClickVendorFunction,
+    embedTCFStub?: boolean
+    gdprAppliesGlobally?: boolean
+    iabVersion?: number
+    sdkPath?: string
+    onReady?: OnReadyFunction
+    onConsentChanged?: OnConsentChangedFunction
+    onNoticeShown?: () => void
+    onNoticeHidden?: () => void
+    onNoticeBackdropclick?: () => void
+    onNoticeClickAgree?: () => void
+    onNoticeClickMoreInfo?: () => void
+    onPreferencesClickAgreeToAll?: () => void
+    onPreferencesClickDisagreeToAll?: () => void
+    onPreferencesClickPurposeAgree?: OnPreferencesClickPurposeFunction
+    onPreferencesClickPurposeDisagree?: OnPreferencesClickPurposeFunction
+    onPreferencesClickViewVendors?: () => void
+    onPreferencesClickSaveChoices?: () => void
+    onPreferencesClickVendorAgree?: OnPreferencesClickVendorFunction
+    onPreferencesClickVendorDisagree?: OnPreferencesClickVendorFunction
     onPreferencesClickVendorSaveChoices?: () => void
 }
 
@@ -76,5 +74,5 @@ interface VendorConsentStatus extends Pick<VendorDidomi, 'id' | 'name' | 'purpos
 export type {
     CMPType,
     VendorDidomi,
-    VendorConsentStatus
+    VendorConsentStatus,
 }

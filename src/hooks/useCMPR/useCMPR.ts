@@ -1,9 +1,9 @@
 import {
     useCallback,
-    useMemo
+    useMemo,
 } from 'react'
 
-import useUserConsentContext from '../useCMP'
+import useUserConsentContext from '@hooks/useCMP'
 
 import type * as Types from './types'
 
@@ -15,11 +15,11 @@ const useCMPR: Types.UseCMPR = (vendor) => {
                 headline,
                 subheadline,
                 approveButton,
-                cookieSettingButton
-            }
+                cookieSettingButton,
+            },
         },
         status,
-        approveVendorConsent
+        approveVendorConsent,
     } = useUserConsentContext()
 
     const vendorStatus = vendor && status[vendor]
@@ -43,11 +43,11 @@ const useCMPR: Types.UseCMPR = (vendor) => {
                 headline,
                 description: subheadline.replace('{VENDOR}', (vendorStatus?.name || '')),
                 approveButton,
-                cookieSettingButton
+                cookieSettingButton,
             },
             didUserApprove: vendorStatus?.didUserApprove,
             approveVendor: approveVendor,
-            openCookiesSettings: openCookiesSettings
+            openCookiesSettings: openCookiesSettings,
         })
     }, [
         config,
@@ -58,7 +58,7 @@ const useCMPR: Types.UseCMPR = (vendor) => {
         vendorStatus?.name,
         vendorStatus?.didUserApprove,
         approveVendor,
-        openCookiesSettings
+        openCookiesSettings,
     ])
 
     return results
