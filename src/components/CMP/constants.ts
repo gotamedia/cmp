@@ -72,7 +72,7 @@ export enum Vendors {
     GoogleForms = 'c:googlefor-M4AiyDM2',
     GoogleMaps = 'c:googlemap-GNbjq6Rg',
     IMatricsAB = 'c:imatrics-Nx4FZNnQ',
-    Tele2Vaxel = 'c:tele2vaxe-m3hkT6kT'
+    Tele2Vaxel = 'c:tele2vaxe-m3hkT6kT',
 }
 
 export enum Purposes {
@@ -90,110 +90,128 @@ export enum Purposes {
     MeasureContentPerformance = 'measure_content_performance',
     UseLimitedDataToSelectContent = 'use_limited_data_to_select_content',
     UsePreciseGeolocationData = 'geolocation_data',
-    ActivelyScanDeviceCharacteristicsForIdentification = 'device_characteristics'
+    ActivelyScanDeviceCharacteristicsForIdentification = 'device_characteristics',
 }
 
 export const EmbedVendors = {
     Crowdsignal: {
         vendor: Vendors.Crowdsignal,
-        regex: {
-            html: /(<crowdsignal-embed|<\/crowdsignal-embed>)/i,
-            src: /https:\/\/gotamedia\.crowdsignal\.net/i,
-            script: /(https:\/\/app\.crowdsignal\.com\/embed\.js|https:\/\/app\.crowdsignal\.com\/survey\.js)/i
-        }
+        regex: [
+            /(<crowdsignal-embed|<\/crowdsignal-embed>)/i,
+            /https:\/\/gotamedia\.crowdsignal\.net/i,
+            /(https:\/\/app\.crowdsignal\.com\/embed\.js|https:\/\/app\.crowdsignal\.com\/survey\.js)/i,
+        ],
     },
     Datawrapper: {
         vendor: Vendors.Datawrapper,
-        regex: { iframeSrc: /https:\/\/datawrapper\.dwcdn\.net/i }
+        regex: [
+            /https:\/\/datawrapper\.dwcdn\.net/i,
+        ],
     },
     Facebook: {
         vendor: Vendors.Facebook,
-        regex: {
-            iframeSrc: /facebook\.com\/plugins\/(post|likebox)\.php\?/i,
-            script: /\/\/connect\.facebook\.net/i,
-        },
+        regex: [
+            /facebook\.com\/plugins\/(post|likebox)\.php\?/i,
+            /\/\/connect\.facebook\.net/i,
+        ],
     },
     Flourish: {
         vendor: Vendors.Flourish,
-        regex: {
-            html: /flourish-embed/i,
-            script: /https:\/\/public\.flourish\.studio\/resources\/embed\.js/i
-        }
+        regex: [
+            /flourish-embed/i,
+            /https:\/\/public\.flourish\.studio\/resources\/embed\.js/i,
+        ],
     },
     Flowplayer: {
         vendor: Vendors.Flowplayer,
-        regex: {
-            html: /flowplayer-embed-container/i,
-            script: /cdn\.flowplayer\.com\/players/i,
-            cdn: /\/\/ljsp\.lwcdn\.com\/api\/video\/embed\.jsp/i
-        }
+        regex: [
+            /flowplayer-embed-container/i,
+            /cdn\.flowplayer\.com\/players/i,
+            /\/\/ljsp\.lwcdn\.com\/api\/video\/embed\.jsp/i,
+        ],
     },
     GoogleForms: {
         vendor: Vendors.GoogleForms,
-        regex: { iframeSrc: /docs\.google\.com\/forms/i }
+        regex: [
+            /docs\.google\.com\/forms/i]
+        ,
     },
     GoogleMaps: {
         vendor: Vendors.GoogleMaps,
-        regex: { iframeSrc: /www\.google\.com\/maps\/(?:d\/)?embed/i }
+        regex: [
+            /www\.google\.com\/maps\/(?:d\/)?embed/i,
+        ],
     },
     Ifragasatt: {
         vendor: Vendors.Ifragasatt,
-        regex: {
-            iframeSrc: /https:\/\/direkt-klient\.ifragasatt\.se/i,
-            fetchSrc: /https:\/\/direkt\.ifragasatt\.se\/load/i
-        }
+        regex: [
+            /https:\/\/direkt-klient\.ifragasatt\.se/i,
+            /https:\/\/direkt\.ifragasatt\.se\/load/i,
+        ],
     },
     Instagram: {
         vendor: Vendors.Instagram,
-        regex: {
-            blockquotes: /<blockquote class='instagram-media'/i,
-            htmlAttributes: /(data-instgrm-captioned|data-instgrm-permalink|data-instgrm-version)/i,
-            script: /https:\/\/www\.instagram\.com\/embed\.js/i,
-            tracker: /https:\/\/www\.instagram\.com\/[^?]*\?utm_source=ig_embed/i
-        }
+        regex: [
+            /<blockquote class='instagram-media'/i,
+            /(data-instgrm-captioned|data-instgrm-permalink|data-instgrm-version)/i,
+            /https:\/\/www\.instagram\.com\/embed\.js/i,
+            /https:\/\/www\.instagram\.com\/[^?]*\?utm_source=ig_embed/i,
+        ],
     },
     Livecenter: {
         vendor: Vendors.LiveCenter,
-        regex: {
-            html: /live-center-embed/i,
-            script: /data-src='https:\/\/livecenter\.norkon\.net/i
-        }
+        regex: [
+            /live-center-embed/i,
+            /data-src='https:\/\/livecenter\.norkon\.net/i,
+        ],
     },
     Libsyn: {
         vendor: Vendors.Libsyn,
-        regex: {
-            html: /title='Libsyn Player'/i,
-            iframeSrc: /(\/\/html5-player\.libsyn\.com\/embed|'\/\/play\.libsyn\.com\/embed)/i
-        }
+        regex: [
+            /title='Libsyn Player'/i,
+            /(\/\/html5-player\.libsyn\.com\/embed|'\/\/play\.libsyn\.com\/embed)/i,
+        ],
     },
     Keesing: {
         vendor: Vendors.Keesing,
-        regex: {}
+        regex: [],
     },
     KnightLab: {
         vendor: Vendors.KnightLab,
-        regex: { iframeSrc: /https:\/\/cdn\.knightlab\.com\/libs/i }
+        regex: [
+            /https:\/\/cdn\.knightlab\.com\/libs/i,
+        ],
     },
     Podspace: {
         vendor: Vendors.Podspace,
-        regex: { iframeSrc: /embed\.pod\.space\/player\?/i }
+        regex: [
+            /embed\.pod\.space\/player\?/i,
+        ],
     },
     Wufoo: {
         vendor: Vendors.Wufoo,
-        regex: { scripts: /wufoo\.com\/scripts\/embed\/form\.js/ }
+        regex: [
+            /wufoo\.com\/scripts\/embed\/form\.js/,
+        ],
     },
     XTwitter: {
         vendor: Vendors.XTwitter,
-        regex: { script: /https:\/\/platform\.twitter\.com\/widgets\.js/ }
+        regex: [
+            /https:\/\/platform\.twitter\.com\/widgets\.js/,
+        ],
     },
     Youtube: {
         vendor: Vendors.Youtube,
-        regex: { iframeSrc: /https:\/\/www\.youtube\.com\/embed/i }
+        regex: [
+            /https:\/\/www\.youtube\.com\/embed/i,
+        ],
     },
     ShowheroesSE: {
         vendor: Vendors.ShowheroesSE,
-        regex: { script: /https:\/\/delivery\.youplay\.se\/load\.js/i }
-    }
+        regex: [
+            /https:\/\/delivery\.youplay\.se\/load\.js/i,
+        ],
+    },
 }
 
 export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
@@ -201,24 +219,24 @@ export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
         ignoreCountry: true,
         name: 'Barometern',
         logoUrl: 'https://cdn.gotamedia.se/applications/nxt/brands/ba/dark.svg',
-        privacyPolicyURL: 'https://kundcenter.gotamedia.se/personuppgiftspolicy/'
+        privacyPolicyURL: 'https://kundcenter.gotamedia.se/personuppgiftspolicy/',
     },
     theme: {
         linkColor: '#0182C9',
-        font: 'Sanomat Sans Text'
+        font: 'Sanomat Sans Text',
     },
     notice: {
         position: 'popup',
         showDataProcessing: false,
-        enableBulkActionOnPurposes: true
+        enableBulkActionOnPurposes: true,
     },
     languages: {
         enabled: ['sv'],
-        default: 'sv'
+        default: 'sv',
     },
     preferences: {
         enableAllButtons: true,
-        canCloseWhenConsentIsMissing: true
+        canCloseWhenConsentIsMissing: true,
     },
     tagManager: { provider: 'gtm' },
     integrations: {
@@ -226,10 +244,10 @@ export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
         vendors: {
             google: {
                 enable: true,
-                eprivacy: true
-            }
-        }
-    }
+                eprivacy: true,
+            },
+        },
+    },
 }
 
 export const DEFAULT_USER_CONSENT: ContextType = {
@@ -302,7 +320,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.GoogleForms]: undefined,
         [Vendors.GoogleMaps]: undefined,
         [Vendors.IMatricsAB]: undefined,
-        [Vendors.Tele2Vaxel]: undefined
+        [Vendors.Tele2Vaxel]: undefined,
     },
     purposes: {
         [Purposes.NecessaryCookies]: undefined,
@@ -319,7 +337,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Purposes.MeasureContentPerformance]: undefined,
         [Purposes.UseLimitedDataToSelectContent]: undefined,
         [Purposes.UsePreciseGeolocationData]: undefined,
-        [Purposes.ActivelyScanDeviceCharacteristicsForIdentification]: undefined
+        [Purposes.ActivelyScanDeviceCharacteristicsForIdentification]: undefined,
     },
     status: buildDefaultVendorStatus(Vendors),
     approveVendorConsent(params) {
@@ -329,5 +347,5 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         transaction.commit()
     },
     config: DEFAULT_CONSENT_CONFIG,
-    i18n: defaultI18n
+    i18n: defaultI18n,
 }
