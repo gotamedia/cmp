@@ -1,9 +1,11 @@
 import {
     useCallback,
-    useMemo
+    useMemo,
 } from 'react'
 
-import useUserConsentContext from '../useCMP'
+import type { Purposes } from '@components/CMP'
+
+import useUserConsentContext from '@hooks/useCMP'
 
 import type * as Types from './types'
 
@@ -15,50 +17,62 @@ const useCMPR: Types.UseCMPR = (vendor) => {
                 headline,
                 subheadline,
                 approveButton,
-                cookieSettingButton
-            }
+                cookieSettingButton,
+            },
         },
         status,
-        approveVendorConsent
+        approveVendorConsent,
     } = useUserConsentContext()
 
-    const vendorStatus = vendor && status[vendor]
+    const vendors = Array.isArray(vendor) ? vendor : [vendor]
+    const statuses = vendors.map(v => status[v])
+    const didUserApprove = statuses.every(vendorStatus => vendorStatus.didUserApprove)
 
     const approveVendor = useCallback(() => {
-        if (!vendorStatus) return
-        if (!vendorStatus.id) return
-        if (!vendorStatus.purposeIds?.length) return
+        if (didUserApprove) return
 
-        approveVendorConsent({ vendor: vendorStatus.id, purposes: vendorStatus.purposeIds })
-    }, [approveVendorConsent, vendorStatus])
+        const vendorIds = statuses.map(s => s.id)
+
+        const purposeIds = statuses
+            .map(s => s?.purposeIds)
+            .filter(Boolean)
+            .reduce<Purposes[]>((prev, curr) => prev.concat(curr!!), [])
+
+        if (!vendorIds) return
+        if (!purposeIds) return
+
+        approveVendorConsent({ vendor: vendorIds, purposes: purposeIds })
+    }, [approveVendorConsent, didUserApprove, statuses])
 
     const openCookiesSettings = useCallback(() => {
         window?.Didomi?.notice?.show?.()
     }, [])
 
     const results = useMemo(() => {
+        const names = statuses.map(s => s?.name).join(', ')
+
         return ({
             config: config,
             i18n: {
                 headline,
-                description: subheadline.replace('{VENDOR}', (vendorStatus?.name || '')),
+                description: subheadline.replace('{VENDOR}', (names || '')),
                 approveButton,
-                cookieSettingButton
+                cookieSettingButton,
             },
-            didUserApprove: vendorStatus?.didUserApprove,
+            didUserApprove,
             approveVendor: approveVendor,
-            openCookiesSettings: openCookiesSettings
+            openCookiesSettings: openCookiesSettings,
         })
     }, [
+        statuses,
         config,
         headline,
+        subheadline,
         approveButton,
         cookieSettingButton,
-        subheadline,
-        vendorStatus?.name,
-        vendorStatus?.didUserApprove,
+        didUserApprove,
         approveVendor,
-        openCookiesSettings
+        openCookiesSettings,
     ])
 
     return results

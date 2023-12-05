@@ -2,7 +2,7 @@ import type {
     ReactNode,
     RefAttributes,
     ForwardRefExoticComponent,
-    HTMLAttributes
+    HTMLAttributes,
 } from 'react'
 
 import type { Vendors } from '../CMP'
@@ -10,7 +10,7 @@ import type { Vendors } from '../CMP'
 type NativeDivProps = HTMLAttributes<HTMLDivElement>
 
 interface CMPRProps extends NativeDivProps {
-    vendor: Vendors,
+    vendor: Vendors | Vendors[]
     children: ReactNode
 }
 
@@ -18,5 +18,5 @@ type CMPRType = ForwardRefExoticComponent<CMPRProps & RefAttributes<HTMLDivEleme
 
 export type {
     CMPRType,
-    CMPRProps
+    CMPRProps,
 }
