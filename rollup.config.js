@@ -7,6 +7,7 @@ const typescript = require('rollup-plugin-typescript2')
 const peerDepsExternal = require('rollup-plugin-peer-deps-external')
 
 const cmpPackage = require('./package.json')
+const tscAlias = require('./rollup/tscAlias')
 
 module.exports = {
     input: 'src/index.ts',
@@ -35,6 +36,7 @@ module.exports = {
             rollupCommonJSResolveHack: false
         }),
         babel(),
-        json()
+        json(),
+        tscAlias()
     ]
 }
