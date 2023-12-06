@@ -1,10 +1,10 @@
+import type { IDidomiConfig } from '@didomi/react'
+
 import { buildDefaultVendorStatus } from '@components/CMP/utils'
 
 import type { ContextType } from '@contexts/Consent'
 
 import defaultI18n from '../../utils/i18n.json'
-
-import type { IDidomiConfig } from '@didomi/react'
 
 export enum Vendors {
     AdformAS = 50,
@@ -342,7 +342,12 @@ export const DEFAULT_USER_CONSENT: ContextType = {
     status: buildDefaultVendorStatus(Vendors),
     approveVendorConsent(params) {
         const transaction = window.Didomi.openTransaction()
-        transaction.enableVendor(params.vendor)
+        const vendors = Array.isArray(params.vendor) ? params.vendor : [params.vendor]
+
+        for (const vendorId of vendors) {
+            transaction.enableVendor(vendorId)
+        }
+
         transaction.enablePurposes(...params.purposes)
         transaction.commit()
     },
