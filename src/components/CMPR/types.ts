@@ -5,7 +5,7 @@ import type {
     HTMLAttributes,
 } from 'react'
 
-import type { Vendors } from '../CMP'
+import type { Vendors } from '@components/CMP'
 
 type NativeDivProps = HTMLAttributes<HTMLDivElement>
 

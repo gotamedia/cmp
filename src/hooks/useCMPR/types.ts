@@ -1,6 +1,6 @@
 import type { IDidomiConfig } from '@didomi/react'
 
-import type { Vendors } from '../../components/CMP'
+import type { Vendors } from '@components/CMP'
 
 export type UseCMPR = (vendor: Vendors | Vendors[]) => {
     config: IDidomiConfig

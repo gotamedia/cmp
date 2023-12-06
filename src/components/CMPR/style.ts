@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
 import {
     Button,
     ButtonVariants,
-    ButtonVariantTypes
+    ButtonVariantTypes,
 } from '@gotamedia/fluffy'
+import styled, { css } from 'styled-components'
 
 const Wrapper = styled.div<{ fontFamily?: string }>`
     width: 100%;
@@ -57,7 +57,7 @@ const Content = styled.div`
 
 const ConsentButton = styled(Button).attrs(() => {
     return {
-        variant: ButtonVariants.OutlineTransparent
+        variant: ButtonVariants.OutlineTransparent,
     }
 })`
 
@@ -66,7 +66,7 @@ const ConsentButton = styled(Button).attrs(() => {
 const CookiesSettingButton = styled(Button).attrs(() => {
     return {
         variant: ButtonVariants.Text,
-        variantType: ButtonVariantTypes.Link
+        variantType: ButtonVariantTypes.Link,
     }
 })`
     height: unset;
@@ -80,5 +80,5 @@ export {
     Description,
     Content,
     ConsentButton,
-    CookiesSettingButton
+    CookiesSettingButton,
 }

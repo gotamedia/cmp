@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
+        "baseUrl": ".",
+        "outDir": "dist",
         "target": "es5",
         "lib": [
             "dom",
@@ -21,27 +22,21 @@
         "incremental": true,
         "plugins": [
             {
-                "transform": "@zerollup/ts-transform-paths",
-                "exclude": [
-                    "*"
-                ]
-            },
-            {
                 "name": "next"
             }
         ],
         "paths": {
             "@components/*": [
-                "components/*"
+                "src/components/*"
             ],
             "@contexts/*": [
-                "contexts/*"
+                "src/contexts/*"
             ],
             "@hooks/*": [
-                "hooks/*"
+                "src/hooks/*"
             ],
             "@utils/*": [
-                "utils/*"
+                "src/utils/*"
             ],
             "@/*": [
                 "./*"
@@ -51,13 +46,10 @@
     "include": [
         "**/*.ts",
         "**/*.tsx",
-        "eslint",
-        ".eslintrc.js"
     ],
     "exclude": [
         "**/node_modules/**",
         "**/dist/**",
-        "rollup.config.js",
-        "src/contexts/Consent/devVendorEmbed.ts"
+        "rollup.config.js"
     ]
 }
