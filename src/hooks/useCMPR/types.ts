@@ -14,3 +14,9 @@ export type UseCMPR = (vendor: Vendors | Vendors[]) => {
     approveVendor: () => void
     openCookiesSettings: () => void
 }
+
+type ConnectWords = (arg: string[]) => string
+
+export type {
+    ConnectWords,
+}

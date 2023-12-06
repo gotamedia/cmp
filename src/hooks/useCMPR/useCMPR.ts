@@ -8,6 +8,7 @@ import type { Purposes } from '@components/CMP'
 import useUserConsentContext from '@hooks/useCMP'
 
 import type * as Types from './types'
+import * as Utils from './utils'
 
 const useCMPR: Types.UseCMPR = (vendor) => {
     const {
@@ -49,13 +50,17 @@ const useCMPR: Types.UseCMPR = (vendor) => {
     }, [])
 
     const results = useMemo(() => {
-        const names = statuses.map(s => s?.name).join(', ')
+        const names = statuses
+            .map(s => s?.name)
+            .filter(Boolean) as string[]
+
+        const description = !names?.length ? '' : subheadline.replace('{VENDOR}', (Utils.connectWords(names)))
 
         return ({
             config: config,
             i18n: {
                 headline,
-                description: subheadline.replace('{VENDOR}', (names || '')),
+                description,
                 approveButton,
                 cookieSettingButton,
             },
