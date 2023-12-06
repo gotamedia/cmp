@@ -1,5 +1,8 @@
 import { DidomiSDK } from '@didomi/react'
-import type { IUserStatus, OnReadyFunction } from '@didomi/react'
+import type {
+    IUserStatus,
+    OnReadyFunction,
+} from '@didomi/react'
 import {
     useState,
     useRef,
@@ -7,11 +10,12 @@ import {
     useMemo,
 } from 'react'
 
+import Context from '@contexts/Consent'
+
 import * as Constants from './constants'
 import * as Styled from './style'
 import type * as Types from './types'
 import * as Utils from './utils'
-import Context from '../../contexts/Consent'
 import defaultI18n from '../../utils/i18n.json'
 
 const vendorsSet = new Set<string | number>(Object.values(Constants.Vendors))
@@ -93,7 +97,6 @@ const CMP: Types.CMPType = (props) => {
             .forEach((vendor) => { updatedUserConsent.vendors[vendor] = true })
         userConsentStatus.purposesEnabled
             .forEach((purpose) => { updatedUserConsent.purposes[purpose] = true })
-
         userConsentStatus.vendorsDisabled
             .forEach((vendor) => { updatedUserConsent.vendors[vendor] = false })
         userConsentStatus.purposesDisabled

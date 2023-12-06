@@ -1,16 +1,13 @@
-import {
-    Vendors,
-    Purposes
-} from '../../components/CMP'
+import { Vendors, Purposes } from '@components/CMP'
 
-import useCMP from '../useCMP'
+import useCMP from '@hooks/useCMP'
 
 import type * as Types from './types'
 
 const useUserConsent: Types.UseUserConsent = (items) => {
     const {
         vendors,
-        purposes
+        purposes,
     } = useCMP()
 
     if (Array.isArray(items) && items.length) {
@@ -25,7 +22,8 @@ const useUserConsent: Types.UseUserConsent = (items) => {
             if (Object.values(Purposes).includes(item as Purposes)) {
                 if (item === Purposes.NecessaryCookies) {
                     consents[item] = true
-                } else {
+                }
+                else {
                     // @ts-ignore
                     consents[item] = purposes[item]
                 }
@@ -37,7 +35,7 @@ const useUserConsent: Types.UseUserConsent = (items) => {
 
     return {
         ...vendors,
-        ...purposes
+        ...purposes,
     }
 }
 

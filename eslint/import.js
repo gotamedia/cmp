@@ -14,7 +14,6 @@ module.exports = {
                     ['parent', 'sibling'],
                     'internal',
                     'index',
-                    'type',
                 ],
                 'pathGroups': [
                     {

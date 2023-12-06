@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
-import useCMPR from '../../hooks/useCMPR'
+
+import useCMPR from '@hooks/useCMPR'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -16,7 +17,7 @@ const CMPR: Types.CMPRType = forwardRef((props, ref) => {
         config,
         didUserApprove,
         approveVendor,
-        openCookiesSettings
+        openCookiesSettings,
     } = useCMPR(vendor)
 
     if (didUserApprove === undefined) {
@@ -39,7 +40,7 @@ const CMPR: Types.CMPRType = forwardRef((props, ref) => {
                 <Styled.Headline>
                     {i18n.headline}
                 </Styled.Headline>
-                
+
                 <Styled.Description>
                     {i18n.description}
                 </Styled.Description>

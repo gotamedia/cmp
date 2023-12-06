@@ -1,20 +1,20 @@
-import {
-    useState,
-    useMemo,
-    useCallback
-} from 'react'
-import styled from 'styled-components'
 import Button from '@gotamedia/fluffy/Button'
 import Textarea from '@gotamedia/fluffy/Textarea'
 import { ThemeProvider } from '@gotamedia/fluffy/ThemeContext'
-import { StoryFn } from '@storybook/react'
+import type { StoryFn } from '@storybook/react'
+import {
+    useState,
+    useMemo,
+    useCallback,
+} from 'react'
+import styled from 'styled-components'
 
+import type { CMPRProps } from './'
 import {
     CMP as CMPComponent,
     CMPR as CMPRComponent,
-    CMPRProps,
     Vendors,
-    DEFAULT_CONSENT_CONFIG
+    DEFAULT_CONSENT_CONFIG,
 } from './'
 
 const Wrapper = styled.div`
@@ -41,11 +41,11 @@ const StyledTextarea = styled(Textarea)`
 const Template = ({ brandColor, children, ...filteredProps }: any) => {
     const theme = {
         colors: {
-            brand: brandColor
+            brand: brandColor,
         },
         fonts: {
-            generic: []
-        }
+            generic: [],
+        },
     }
 
     const handleOnShowNoticeClick = useCallback(() => {
@@ -111,7 +111,7 @@ export const CMP = (props: any) => {
     )
 }
 
-export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
+export const PreviewCMP = ({ config, brandColor, ...filteredProps }: any) => {
     const [showConsent, setShowConsent] = useState(false)
     const [noticeContent, setNoticeContent] = useState('🍪 Test consent notice content 🍪')
 
@@ -123,10 +123,10 @@ export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
                 content: {
                     ...config.notice.content,
                     popup: {
-                        sv: noticeContent
-                    }
-                }
-            }
+                        sv: noticeContent,
+                    },
+                },
+            },
         }
     }, [config, noticeContent])
 
@@ -142,11 +142,11 @@ export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
 
     const theme = {
         colors: {
-            brand: brandColor
+            brand: brandColor,
         },
         fonts: {
-            generic: []
-        }
+            generic: [],
+        },
     }
 
     return (
@@ -166,14 +166,16 @@ export const PreviewCMP = ({ config, brandColor, ...filteredProps}: any) => {
                 </StyledButton>
 
                 {
-                    showConsent ? (
-                        <CMPComponent
-                            {...filteredProps}
-                            config={_config}
-                        />
-                    ) : (
-                        null
-                    )
+                    showConsent
+                        ? (
+                            <CMPComponent
+                                {...filteredProps}
+                                config={_config}
+                            />
+                            )
+                        : (
+                                null
+                            )
                 }
 
             </Wrapper>
@@ -187,10 +189,18 @@ export const CMPR: StoryFn<CMPRProps> = ({ vendor, ...filteredProps }: any) => {
             <Template {...filteredProps}>
                 <CMPRComponent vendor={vendor}>
                     <Wrapper>
-                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
-                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
-                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
-                        <EmbedText> {'<--- Embeds content --->'} </EmbedText>
+                        <EmbedText>
+                            {'<--- Embeds content --->'}
+                        </EmbedText>
+                        <EmbedText>
+                            {'<--- Embeds content --->'}
+                        </EmbedText>
+                        <EmbedText>
+                            {'<--- Embeds content --->'}
+                        </EmbedText>
+                        <EmbedText>
+                            {'<--- Embeds content --->'}
+                        </EmbedText>
                     </Wrapper>
                 </CMPRComponent>
             </Template>
@@ -199,15 +209,15 @@ export const CMPR: StoryFn<CMPRProps> = ({ vendor, ...filteredProps }: any) => {
 }
 
 CMPR.args = {
-    vendor: Vendors.Facebook
+    vendor: Vendors.Facebook,
 }
 
 CMPR.argTypes = {
     vendor: {
-        options: Object.keys(Vendors).map(i => Number(i) ? null : i).filter(Boolean ),
+        options: Object.keys(Vendors).map(i => Number(i) ? null : i).filter(Boolean),
         mapping: Vendors,
-        control: { type: 'select' }
-    }
+        control: { type: 'select' },
+    },
 }
 
 export default {
@@ -219,12 +229,12 @@ export default {
         noticeId: 'qyYUYP6e',
         sdkPath: 'https://sdk.privacy-center.org/',
         iabVersion: 2,
-        brandColor: '#005CA9'
+        brandColor: '#005CA9',
     },
     parameters: {
-        layout: 'centered'
+        layout: 'centered',
     },
     argTypes: {
-        brandColor: { control: 'color' }
-    }
+        brandColor: { control: 'color' },
+    },
 }

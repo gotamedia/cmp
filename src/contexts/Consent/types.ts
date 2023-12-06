@@ -1,14 +1,8 @@
 import type { IDidomiConfig } from '@didomi/react'
-import type {
-    FC,
-    PropsWithChildren,
-} from 'react'
+import type { FC, PropsWithChildren } from 'react'
 
-import type {
-    Purposes,
-    Vendors,
-    VendorConsentStatus,
-} from '../../components/CMP'
+import type { Vendors, Purposes, VendorConsentStatus } from '@components/CMP'
+
 import type defaultI18n from '../../utils/i18n.json'
 
 type ContextType = {
