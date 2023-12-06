@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/gotamedia/cmp/compare/v1.2.0...v1.3.0) (2023-12-06)
+
+
+### Features
+
+* adding support for validating multiple vendors ([bfadee2](https://github.com/gotamedia/cmp/commit/bfadee2716877701b1873bc137e648c9addd325d))
+
 ## [1.2.0](https://github.com/gotamedia/cmp/compare/v1.1.0...v1.2.0) (2023-12-01)
 
 
