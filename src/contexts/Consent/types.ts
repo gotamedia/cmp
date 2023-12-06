@@ -12,7 +12,7 @@ type ContextType = {
     shouldRemoveCookies: boolean
     didUserConsent: boolean
     status: Record<string, VendorConsentStatus>
-    approveVendorConsent(params: { vendor: Vendors, purposes: string[] }): void
+    approveVendorConsent(params: { vendor: Vendors | Vendors[], purposes: string[] }): void
     i18n: typeof defaultI18n
     config: IDidomiConfig
 }

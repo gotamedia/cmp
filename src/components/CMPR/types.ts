@@ -10,7 +10,7 @@ import type { Vendors } from '@components/CMP'
 type NativeDivProps = HTMLAttributes<HTMLDivElement>
 
 interface CMPRProps extends NativeDivProps {
-    vendor: Vendors
+    vendor: Vendors | Vendors[]
     children: ReactNode
 }
 

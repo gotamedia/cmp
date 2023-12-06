@@ -4,11 +4,14 @@ import type {
     OnConsentChangedFunction,
     OnPreferencesClickPurposeFunction,
     OnPreferencesClickVendorFunction,
+    IDidomiObject,
 } from '@didomi/react'
 import type {
     FC,
     ReactNode,
 } from 'react'
+
+import type { ContextType } from '@contexts/Consent'
 
 import type {
     Purposes,
@@ -71,8 +74,11 @@ interface VendorConsentStatus extends Pick<VendorDidomi, 'id' | 'name' | 'purpos
     didUserApprove?: boolean
 }
 
+type HandleOnReady = (didomi: IDidomiObject, contextState: ContextType) => void
+
 export type {
     CMPType,
+    HandleOnReady,
     VendorDidomi,
     VendorConsentStatus,
 }

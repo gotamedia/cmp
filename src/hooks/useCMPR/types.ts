@@ -2,7 +2,7 @@ import type { IDidomiConfig } from '@didomi/react'
 
 import type { Vendors } from '@components/CMP'
 
-export type UseCMPR = (vendor: Vendors) => {
+export type UseCMPR = (vendor: Vendors | Vendors[]) => {
     config: IDidomiConfig
     i18n: {
         headline: string
@@ -13,4 +13,10 @@ export type UseCMPR = (vendor: Vendors) => {
     didUserApprove: any
     approveVendor: () => void
     openCookiesSettings: () => void
+}
+
+type ConnectWords = (arg: string[]) => string
+
+export type {
+    ConnectWords,
 }

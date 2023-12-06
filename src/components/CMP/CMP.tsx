@@ -44,7 +44,7 @@ const CMP: Types.CMPType = (props) => {
 
     const [userConsent, setUserConsent] = useState({ ...Constants.DEFAULT_USER_CONSENT })
 
-    const handleOnReady = useCallback<OnReadyFunction>((didomi) => {
+    const handleOnReady = useCallback<Types.HandleOnReady>((didomi, contextState) => {
         const userStatus = didomi.getUserStatus()
         const allVendors: Types.VendorDidomi[] = didomi.getVendors()
 
@@ -66,7 +66,8 @@ const CMP: Types.CMPType = (props) => {
             .filter(({ id }) => filterVendors(id))
             .reduce((acc, vendor) => {
                 const isVendorApproved = userConsentStatus.vendorsEnabled.includes(vendor.id)
-                const isVendorPurposesApproved = vendor?.purposeIds?.every(purposeId => userConsentStatus.purposesEnabled.includes(purposeId))
+                const noPurposesRequired = !vendor?.purposeIds?.length
+                const isVendorPurposesApproved = noPurposesRequired || vendor?.purposeIds?.every(purposeId => userConsentStatus.purposesEnabled.includes(purposeId))
 
                 const name = vendor.name || i18n.vendors.filter(({ id }) => id === vendor.id)?.[0]?.name
 
@@ -82,10 +83,10 @@ const CMP: Types.CMPType = (props) => {
             }, {})
 
         const updatedUserConsent = {
-            ...Constants.DEFAULT_USER_CONSENT,
+            ...contextState,
             shouldRemoveCookies,
             status: {
-                ...Constants.DEFAULT_USER_CONSENT.status,
+                ...contextState.status,
                 ...status,
             },
             isReady: true,
@@ -113,8 +114,12 @@ const CMP: Types.CMPType = (props) => {
 
     const handleOnConsentChanged = useCallback((value: any) => {
         onConsentChanged?.(value)
-        handleOnReady(window.Didomi)
-    }, [handleOnReady, onConsentChanged])
+        handleOnReady(window.Didomi, userConsent)
+    }, [handleOnReady, onConsentChanged, userConsent])
+
+    const onHandleOnReady = useCallback<OnReadyFunction>((value) => {
+        handleOnReady(value, userConsent)
+    }, [handleOnReady, userConsent])
 
     const handleOnNoticeShown = useCallback(() => {
         const didomiNoticeElement = document.getElementById('didomi-popup')
@@ -170,7 +175,7 @@ const CMP: Types.CMPType = (props) => {
                             gdprAppliesGlobally
                             config={config}
                             iabVersion={Number(iabVersion)}
-                            onReady={handleOnReady}
+                            onReady={onHandleOnReady}
                             onConsentChanged={handleOnConsentChanged}
                             onNoticeShown={handleOnNoticeShown}
                             onNoticeClickMoreInfo={handleOnNoticeClickMoreInfo}

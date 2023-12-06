@@ -342,7 +342,12 @@ export const DEFAULT_USER_CONSENT: ContextType = {
     status: buildDefaultVendorStatus(Vendors),
     approveVendorConsent(params) {
         const transaction = window.Didomi.openTransaction()
-        transaction.enableVendor(params.vendor)
+        const vendors = Array.isArray(params.vendor) ? params.vendor : [params.vendor]
+
+        for (const vendorId of vendors) {
+            transaction.enableVendor(vendorId)
+        }
+
         transaction.enablePurposes(...params.purposes)
         transaction.commit()
     },
