@@ -534,8 +534,10 @@ const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
                             &:hover {
                                 background-color: #dedede !important;
                             }
-    
-                            &--selected {
+                        }
+
+                        &--selected {
+                            &:not(:disabled) {
                                 &:hover {
                                     background-color: #757575 !important;
                                 }
