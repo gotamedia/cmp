@@ -40,6 +40,14 @@ const ConsentStyle = createGlobalStyle<{ fontFamily?: string }>`
         }
 
         .didomi {
+            &-mobile {
+                * {
+                    h1,h2,h3,h4,p,span {
+                        text-align: left !important;
+                    }
+                }
+            }
+
             &-exterior {
                 &-border {
                     border: none !important;
