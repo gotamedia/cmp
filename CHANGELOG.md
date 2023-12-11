@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/gotamedia/cmp/compare/v1.3.0...v1.3.1) (2023-12-11)
+
+
+### Bug Fixes
+
+* **style:** Fixed faulty hover state for buttons. ([c2bfef6](https://github.com/gotamedia/cmp/commit/c2bfef68c5edd3bfb8bd93e1d5340b035dcaf984))
+* **style:** Fixed text alignments on Mobile view. ([6a43ec7](https://github.com/gotamedia/cmp/commit/6a43ec75f9600797233c5c3a69c682293533c933))
+
 ## [1.3.0](https://github.com/gotamedia/cmp/compare/v1.2.0...v1.3.0) (2023-12-06)
 
 
