@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/gotamedia/cmp/compare/v1.3.1...v1.4.0) (2023-12-14)
+
+
+### Features
+
+* introduce vendor shoot it live ([5ce9ae8](https://github.com/gotamedia/cmp/commit/5ce9ae837ec697813041d1fd49be0c569e6e2238))
+
 ## [1.3.1](https://github.com/gotamedia/cmp/compare/v1.3.0...v1.3.1) (2023-12-11)
 
 
