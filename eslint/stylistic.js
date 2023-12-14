@@ -11,6 +11,7 @@ const customized = stylistic.configs.customize({
 module.exports = {
     rules: {
         ...customized.rules,
+        '@stylistic/multiline-ternary': ['off'],
         '@stylistic/jsx-curly-brace-presence': [
             'error',
             {

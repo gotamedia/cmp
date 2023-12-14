@@ -48,6 +48,7 @@ export enum Vendors {
     ReadpeakOy = 290,
     RTBHouse = 16,
     SeenthisAB = 415,
+    ShootItLive = 'c:shootitl-xMprkipW',
     ShowheroesSE = 111,
     SmartAdserver = 45,
     StormGeo = 'c:stormgeo-RFNYgX2V',
@@ -188,6 +189,13 @@ export const EmbedVendors = {
             /embed\.pod\.space\/player\?/i,
         ],
     },
+    ShootItLive: {
+        vendor: Vendors.ShootItLive,
+        regex: [
+            /shootitlive-embed/i,
+            /amazonaws\.com\/shootitlive\/shootitlive/i,
+        ],
+    },
     Wufoo: {
         vendor: Vendors.Wufoo,
         regex: [
@@ -296,6 +304,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.ReadpeakOy]: undefined,
         [Vendors.RTBHouse]: undefined,
         [Vendors.SeenthisAB]: undefined,
+        [Vendors.ShootItLive]: undefined,
         [Vendors.ShowheroesSE]: undefined,
         [Vendors.SmartAdserver]: undefined,
         [Vendors.StormGeo]: undefined,
