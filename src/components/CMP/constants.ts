@@ -51,6 +51,8 @@ export enum Vendors {
     ShootItLive = 'c:shootitl-xMprkipW',
     ShowheroesSE = 111,
     SmartAdserver = 45,
+    // TODO: Add Sportify ID
+    Spotify = '',
     StormGeo = 'c:stormgeo-RFNYgX2V',
     StrossleInternationalAB = 851,
     TheUKTradeDeskLtd = 21,
@@ -221,6 +223,12 @@ export const EmbedVendors = {
             /https:\/\/delivery\.youplay\.se\/load\.js/i,
         ],
     },
+    Spotify: {
+        vendor: Vendors.Spotify,
+        regex: [
+            /spotify\.com\/embed/i,
+        ],
+    },
 }
 
 export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
@@ -308,6 +316,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.ShootItLive]: undefined,
         [Vendors.ShowheroesSE]: undefined,
         [Vendors.SmartAdserver]: undefined,
+        [Vendors.Spotify]: undefined,
         [Vendors.StormGeo]: undefined,
         [Vendors.StrossleInternationalAB]: undefined,
         [Vendors.TheUKTradeDeskLtd]: undefined,
