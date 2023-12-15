@@ -101,6 +101,7 @@ export const EmbedVendors = {
             /(<crowdsignal-embed|<\/crowdsignal-embed>)/i,
             /https:\/\/gotamedia\.crowdsignal\.net/i,
             /(https:\/\/app\.crowdsignal\.com\/embed\.js|https:\/\/app\.crowdsignal\.com\/survey\.js)/i,
+            /https:\/\/poll\.fm/i,
         ],
     },
     Datawrapper: {
