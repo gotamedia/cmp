@@ -53,8 +53,7 @@ export enum Vendors {
     ShootItLive = 'c:shootitl-xMprkipW',
     ShowheroesSE = 111,
     SmartAdserver = 45,
-    // TODO: Add Sportify ID
-    Spotify = '',
+    Spotify = 'c:spotify-embed',
     StormGeo = 'c:stormgeo-RFNYgX2V',
     StrossleInternationalAB = 851,
     TheUKTradeDeskLtd = 21,
