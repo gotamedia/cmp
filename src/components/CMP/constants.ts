@@ -164,6 +164,15 @@ export const EmbedVendors = {
             /https:\/\/www\.instagram\.com\/[^?]*\?utm_source=ig_embed/i,
         ],
     },
+    Infogram: {
+        vendor: Vendors.Infogram,
+        regex: [
+            /infogr\.am\/js\/dist\/embed\.js/i,
+            /infogram-embed/i,
+            /infogramembeds/i,
+            /nfogr\.am\/js\/dist\/embed/i,
+        ],
+    },
     Livecenter: {
         vendor: Vendors.LiveCenter,
         regex: [
