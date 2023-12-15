@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/gotamedia/cmp/compare/v1.5.0...v1.6.0) (2023-12-15)
+
+
+### Features
+
+* Added new vendors: Bildbyrå and Infogram ([5e2ed8a](https://github.com/gotamedia/cmp/commit/5e2ed8a7a220ed64408dcb4c21c5c6a19dbb0b13))
+
 ## [1.5.0](https://github.com/gotamedia/cmp/compare/v1.4.0...v1.5.0) (2023-12-15)
 
 
