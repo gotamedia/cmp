@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/gotamedia/cmp/compare/v1.4.0...v1.5.0) (2023-12-15)
+
+
+### Features
+
+* introduce a regex value to match vendor crowdsignal ([a0400d9](https://github.com/gotamedia/cmp/commit/a0400d983d1719aa11a13ce998aca656a7b0e1c2))
+
 ## [1.4.0](https://github.com/gotamedia/cmp/compare/v1.3.1...v1.4.0) (2023-12-14)
 
 
