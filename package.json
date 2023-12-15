@@ -1,6 +1,6 @@
 {
   "name": "@gotamedia/cmp",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A CMP package dedicated to be used in React + Fluffy applications",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
