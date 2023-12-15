@@ -237,6 +237,7 @@ export const EmbedVendors = {
         vendor: Vendors.Spotify,
         regex: [
             /spotify\.com\/embed/i,
+            /spotify\.com/i,
         ],
     },
 }
