@@ -13,6 +13,7 @@ export enum Vendors {
     AmazonAdvertising = 793,
     BannerflowAB = 273,
     BeeswaxIOCorporation = 12,
+    Bildbyrån = 'c:bildbyran-Kn93jnMb',
     BidSwitch = 128,
     BidTheatreAB = 30,
     BonnierNews = 'c:bonnierne-rRkEgPtY',
@@ -31,6 +32,7 @@ export enum Vendors {
     GotaMediaAB = 'c:gotamedia-WdyDtXh2',
     ImproveDigital = 253,
     IndexExchangeInc = 10,
+    Infogram = 'c:infogram-p9WibMfC',
     Instagram = 'c:instagram',
     IPONWEB = 129,
     KantarMediaSwedenAB = 'c:kantarsif-QJr886kb',
@@ -51,6 +53,7 @@ export enum Vendors {
     ShootItLive = 'c:shootitl-xMprkipW',
     ShowheroesSE = 111,
     SmartAdserver = 45,
+    Spotify = 'c:spotify-embed',
     StormGeo = 'c:stormgeo-RFNYgX2V',
     StrossleInternationalAB = 851,
     TheUKTradeDeskLtd = 21,
@@ -160,6 +163,15 @@ export const EmbedVendors = {
             /https:\/\/www\.instagram\.com\/[^?]*\?utm_source=ig_embed/i,
         ],
     },
+    Infogram: {
+        vendor: Vendors.Infogram,
+        regex: [
+            /infogr\.am\/js\/dist\/embed\.js/i,
+            /infogram-embed/i,
+            /infogramembeds/i,
+            /nfogr\.am\/js\/dist\/embed/i,
+        ],
+    },
     Livecenter: {
         vendor: Vendors.LiveCenter,
         regex: [
@@ -221,6 +233,13 @@ export const EmbedVendors = {
             /https:\/\/delivery\.youplay\.se\/load\.js/i,
         ],
     },
+    Spotify: {
+        vendor: Vendors.Spotify,
+        regex: [
+            /spotify\.com\/embed/i,
+            /spotify\.com/i,
+        ],
+    },
 }
 
 export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
@@ -270,6 +289,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.AmazonAdvertising]: undefined,
         [Vendors.BannerflowAB]: undefined,
         [Vendors.BeeswaxIOCorporation]: undefined,
+        [Vendors.Bildbyrån]: undefined,
         [Vendors.BidSwitch]: undefined,
         [Vendors.BidTheatreAB]: undefined,
         [Vendors.BonnierNews]: undefined,
@@ -288,6 +308,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.GotaMediaAB]: undefined,
         [Vendors.ImproveDigital]: undefined,
         [Vendors.IndexExchangeInc]: undefined,
+        [Vendors.Infogram]: undefined,
         [Vendors.Instagram]: undefined,
         [Vendors.IPONWEB]: undefined,
         [Vendors.KantarMediaSwedenAB]: undefined,
@@ -308,6 +329,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.ShootItLive]: undefined,
         [Vendors.ShowheroesSE]: undefined,
         [Vendors.SmartAdserver]: undefined,
+        [Vendors.Spotify]: undefined,
         [Vendors.StormGeo]: undefined,
         [Vendors.StrossleInternationalAB]: undefined,
         [Vendors.TheUKTradeDeskLtd]: undefined,
