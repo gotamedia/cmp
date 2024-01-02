@@ -183,7 +183,7 @@ export const EmbedVendors = {
         vendor: Vendors.Libsyn,
         regex: [
             /title='Libsyn Player'/i,
-            /(\/\/html5-player\.libsyn\.com\/embed|'\/\/play\.libsyn\.com\/embed)/i,
+            /(\/\/html5-player\.libsyn\.com\/embed|\/\/play\.libsyn\.com\/embed)/i,
         ],
     },
     Keesing: {
