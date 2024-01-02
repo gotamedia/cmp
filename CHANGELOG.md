@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/gotamedia/cmp/compare/v1.6.0...v1.6.1) (2024-01-02)
+
+
+### Bug Fixes
+
+* regex typo preventing Libsyn player from rendering ([b527829](https://github.com/gotamedia/cmp/commit/b527829dc3ad6a2bb771542fe753734d9c6f0a78))
+
 ## [1.6.0](https://github.com/gotamedia/cmp/compare/v1.5.0...v1.6.0) (2023-12-15)
 
 
