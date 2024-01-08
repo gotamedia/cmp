@@ -122,4 +122,4 @@ This will run Storybook Docs build and once it's successfully done it will trigg
 This project uses a [trunk based development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development) workflow.
 
 ### Conventional commits
-This project works with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
+This project works with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/). 
