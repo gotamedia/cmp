@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/gotamedia/cmp/compare/v1.6.1...v1.7.0) (2024-01-08)
+
+
+### Features
+
+* trigger build ([43a918f](https://github.com/gotamedia/cmp/commit/43a918fc18c28463301a36ef1e726103bd14019c))
+
 ## [1.6.1](https://github.com/gotamedia/cmp/compare/v1.6.0...v1.6.1) (2024-01-02)
 
 
