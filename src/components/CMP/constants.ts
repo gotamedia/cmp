@@ -147,6 +147,12 @@ export const EmbedVendors = {
             /www\.google\.com\/maps\/(?:d\/)?embed/i,
         ],
     },
+    GotaMediaAB: {
+        vendor: Vendors.GotaMediaAB,
+        regex: [
+            /https:\/\/widgets\.gotamedia\.se\//i,
+        ],
+    },
     Ifragasatt: {
         vendor: Vendors.Ifragasatt,
         regex: [
