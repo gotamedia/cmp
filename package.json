@@ -14,6 +14,7 @@
     "build": "rollup -c",
     "build:docs": "./scripts/storybook.sh && storybook build",
     "build:local": "npm run build && yalc push",
+    "format": "eslint --fix \"**/*.{ts,js,tsx}\"",
     "package:details": "npm pack --dry-run",
     "package:publish": "npm publish --access public"
   },

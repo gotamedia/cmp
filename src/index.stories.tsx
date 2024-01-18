@@ -3,9 +3,9 @@ import Textarea from '@gotamedia/fluffy/Textarea'
 import { ThemeProvider } from '@gotamedia/fluffy/ThemeContext'
 import type { StoryFn } from '@storybook/react'
 import {
-    useState,
-    useMemo,
     useCallback,
+    useMemo,
+    useState,
 } from 'react'
 import styled from 'styled-components'
 
@@ -13,8 +13,8 @@ import type { CMPRProps } from './'
 import {
     CMP as CMPComponent,
     CMPR as CMPRComponent,
-    Vendors,
     DEFAULT_CONSENT_CONFIG,
+    Vendors,
 } from './'
 
 const Wrapper = styled.div`
@@ -57,7 +57,7 @@ const Template = ({ brandColor, children, ...filteredProps }: any) => {
     }, [])
 
     const handleOnShowVendorsClick = useCallback(() => {
-        // @ts-ignore
+        // @ts-expect-error
         window?.Didomi?.preferences?.show?.('vendors')
     }, [])
 

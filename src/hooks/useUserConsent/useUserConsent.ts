@@ -15,7 +15,7 @@ const useUserConsent: Types.UseUserConsent = (items) => {
 
         items.forEach((item) => {
             if (Object.values(Vendors).includes(item as Vendors)) {
-                // @ts-ignore
+                // @ts-expect-error
                 consents[item] = vendors[item]
             }
 
@@ -24,7 +24,7 @@ const useUserConsent: Types.UseUserConsent = (items) => {
                     consents[item] = true
                 }
                 else {
-                    // @ts-ignore
+                    // @ts-expect-error
                     consents[item] = purposes[item]
                 }
             }
