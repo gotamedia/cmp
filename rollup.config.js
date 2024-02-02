@@ -1,10 +1,9 @@
 const babel = require('@rollup/plugin-babel')
-const resolve = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
 const json = require('@rollup/plugin-json')
-
-const typescript = require('rollup-plugin-typescript2')
+const resolve = require('@rollup/plugin-node-resolve')
 const peerDepsExternal = require('rollup-plugin-peer-deps-external')
+const typescript = require('rollup-plugin-typescript2')
 
 const cmpPackage = require('./package.json')
 const tscAlias = require('./rollup/tscAlias')
@@ -17,15 +16,15 @@ module.exports = {
             format: 'cjs',
             exports: 'auto',
             sourcemap: true,
-            interop: 'auto'
+            interop: 'auto',
         },
         {
             file: cmpPackage.module,
             format: 'es',
             exports: 'auto',
             sourcemap: true,
-            interop: 'auto'
-        }
+            interop: 'auto',
+        },
     ],
     plugins: [
         peerDepsExternal(),
@@ -33,10 +32,10 @@ module.exports = {
         commonjs(),
         typescript({
             clean: true,
-            rollupCommonJSResolveHack: false
+            rollupCommonJSResolveHack: false,
         }),
         babel(),
         json(),
-        tscAlias()
-    ]
+        tscAlias(),
+    ],
 }

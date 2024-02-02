@@ -8,22 +8,31 @@ module.exports = {
         'eslint:recommended',
         'plugin:react-hooks/recommended',
         'plugin:storybook/recommended',
-        'plugin:import/typescript',
         'plugin:import/recommended',
         'plugin:@stylistic/recommended-extends',
         './eslint/import.js',
-        './eslint/reactHooks.js',
         './eslint/stylistic.js',
-        './eslint/typescript.js',
+    ],
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'],
+            extends: [
+                'plugin:@typescript-eslint/recommended',
+                'plugin:import/typescript',
+                './eslint/reactHooks.js',
+                './eslint/typescript.js',
+            ],
+
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                },
+                project: './tsconfig.json',
+                tsconfigRootDir: __dirname,
+            },
+        },
     ],
     parser: '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
-    },
     plugins: [
         'react',
         'react-hooks',

@@ -37,7 +37,7 @@ const useCMPR: Types.UseCMPR = (vendor) => {
         const purposeIds = statuses
             .map(s => s?.purposeIds)
             .filter(Boolean)
-            .reduce<Purposes[]>((prev, curr) => prev.concat(curr!!), [])
+            .reduce<Purposes[]>((prev, curr) => prev.concat(curr!), [])
 
         if (!vendorIds) return
         if (!purposeIds) return
