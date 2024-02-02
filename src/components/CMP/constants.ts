@@ -237,6 +237,7 @@ export const EmbedVendors = {
         vendor: Vendors.ShowheroesSE,
         regex: [
             /https:\/\/delivery\.youplay\.se\/load\.js/i,
+            /https:\/\/delivery\.youplay\.se\/load\.html/i,
         ],
     },
     Spotify: {
