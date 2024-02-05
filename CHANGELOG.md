@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/gotamedia/cmp/compare/v1.7.0...v1.7.1) (2024-02-05)
+
+
+### Bug Fixes
+
+* Updated ShowHeroes embed regex match. ([4db90d6](https://github.com/gotamedia/cmp/commit/4db90d62418944548e4e55b3028e4232672fedd8))
+
 ## [1.7.0](https://github.com/gotamedia/cmp/compare/v1.6.1...v1.7.0) (2024-01-08)
 
 
