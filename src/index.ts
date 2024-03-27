@@ -1,9 +1,4 @@
-// Components
-export * from '@components/CMP'
-export { default as CMP } from '@components/CMP'
-export * from '@components/CMPR'
-export { default as CMPR } from '@components/CMPR'
-
+// External
 export {
     DidomiSDK,
     type IDidomiObject,
@@ -12,6 +7,12 @@ export {
     type OnPreferencesClickVendorFunction,
     type OnReadyFunction,
 } from '@didomi/react'
+
+// Components
+export * from '@components/CMP'
+export { default as CMP } from '@components/CMP'
+export * from '@components/CMPR'
+export { default as CMPR } from '@components/CMPR'
 
 // Contexts
 export * from '@contexts/Consent'
@@ -28,3 +29,5 @@ export { default as useCMPR } from '@hooks/useCMPR'
 export { default as i18n } from './utils/i18n.json'
 export { default as open } from '@utils/open'
 export { default as getVendorFromPlainHTML } from '@utils/getVendorFromPlainHTML'
+export { default as onReady } from '@utils/onReady'
+export { default as hasConsent } from '@utils/hasConsent'

@@ -12,17 +12,14 @@ import {
 
 import Context from '@contexts/Consent'
 
+import { filterVendors } from '@utils/filter'
+import getConsentStatus from '@utils/getConsentStatus'
+
 import * as Constants from './constants'
 import * as Styled from './style'
 import type * as Types from './types'
 import * as Utils from './utils'
 import defaultI18n from '../../utils/i18n.json'
-
-const vendorsSet = new Set<string | number>(Object.values(Constants.Vendors))
-const purposesSet = new Set<Constants.Purposes>(Object.values(Constants.Purposes))
-
-const filterVendors = (vendor: Constants.Vendors) => vendorsSet.has(vendor)
-const filterPurposes = (purpose: Constants.Purposes) => purposesSet.has(purpose)
 
 const CMP: Types.CMPType = (props) => {
     const {
@@ -55,19 +52,14 @@ const CMP: Types.CMPType = (props) => {
             Utils.clearCookiesOnConsentChange(cookiesToKeep)
         }
 
-        const userConsentStatus = {
-            vendorsEnabled: userStatus.vendors.consent.enabled.filter(filterVendors) as Constants.Vendors[],
-            purposesEnabled: userStatus.purposes.consent.enabled.filter(filterPurposes) as Constants.Purposes[],
-            vendorsDisabled: userStatus.vendors.consent.disabled.filter(filterVendors) as Constants.Vendors[],
-            purposesDisabled: userStatus.purposes.consent.disabled.filter(filterPurposes) as Constants.Purposes[],
-        }
+        const userConsentStatus = getConsentStatus(didomi)
 
         const status: Record<string, Types.VendorConsentStatus> = allVendors
             .filter(({ id }) => filterVendors(id))
             .reduce((acc, vendor) => {
-                const isVendorApproved = userConsentStatus.vendorsEnabled.includes(vendor.id)
+                const isVendorApproved = userConsentStatus.vendors[vendor.id]
                 const noPurposesRequired = !vendor?.purposeIds?.length
-                const isVendorPurposesApproved = noPurposesRequired || vendor?.purposeIds?.every(purposeId => userConsentStatus.purposesEnabled.includes(purposeId))
+                const isVendorPurposesApproved = noPurposesRequired || vendor?.purposeIds?.every(purposeId => userConsentStatus.purposes[purposeId])
 
                 const name = vendor.name || i18n.vendors.filter(({ id }) => id === vendor.id)?.[0]?.name
 
@@ -84,27 +76,26 @@ const CMP: Types.CMPType = (props) => {
 
         const updatedUserConsent = {
             ...contextState,
-            shouldRemoveCookies,
             status: {
                 ...contextState.status,
                 ...status,
             },
+            vendors: {
+                ...contextState.vendors,
+                ...userConsentStatus.vendors,
+            },
+            purposes: {
+                ...contextState.purposes,
+                ...userConsentStatus.purposes,
+            },
+            shouldRemoveCookies,
             isReady: true,
             didUserConsent: !window.Didomi.shouldConsentBeCollected(),
         }
 
-        userConsentStatus.vendorsEnabled
-            .forEach((vendor) => { updatedUserConsent.vendors[vendor] = true })
-        userConsentStatus.purposesEnabled
-            .forEach((purpose) => { updatedUserConsent.purposes[purpose] = true })
-        userConsentStatus.vendorsDisabled
-            .forEach((vendor) => { updatedUserConsent.vendors[vendor] = false })
-        userConsentStatus.purposesDisabled
-            .forEach((purpose) => { updatedUserConsent.purposes[purpose] = false })
-
         setUserConsent(updatedUserConsent)
 
-        onReady?.(didomi)
+        onReady?.(didomi, updatedUserConsent)
     }, [
         cleanUpCookies,
         cookiesToKeep,
@@ -112,7 +103,7 @@ const CMP: Types.CMPType = (props) => {
         onReady,
     ])
 
-    const handleOnConsentChanged = useCallback((value: any) => {
+    const handleOnConsentChanged = useCallback((value: unknown) => {
         onConsentChanged?.(value)
         handleOnReady(window.Didomi, userConsent)
     }, [handleOnReady, onConsentChanged, userConsent])

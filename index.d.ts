@@ -14,6 +14,7 @@ declare module 'styled-components' {
 
 declare global {
     interface Window {
+        didomiOnReady: (() => void)[]
         Didomi: IDidomiObject
         didomiState: {
             didomiExperimentId: string

@@ -17,19 +17,18 @@ export enum Vendors {
     BidSwitch = 128,
     BidTheatreAB = 30,
     BonnierNews = 'c:bonnierne-rRkEgPtY',
-    ChartBeat = 'c:chartbeat',
-    CrazyEgg = 'c:crazy-egg',
+    ChartBeat = 'c:chartbeat-JGRVrNEg',
+    CrazyEgg = 'c:crazyegg-rfzp9dpw',
     CriteoSA = 91,
+    Datadog = 'c:datadog-FJDrADKB',
     DeltaProjectsAB = 209,
     Demandbase = 397,
-    Didomi = 'c:didomi',
+    Didomi = 'c:didomi-TrXhyTZN',
     EinRadAB = 1097,
     EmerseSverigeAB = 8,
     Essens = 'c:essens-MDVrFgFB',
     Facebook = 'facebook',
     GoogleAdvertisingProducts = 'google',
-    GoogleAnalyticsProducts = 'c:googleana-4TXnJigR',
-    GotaMediaAB = 'c:gotamedia-WdyDtXh2',
     ImproveDigital = 253,
     IndexExchangeInc = 10,
     Infogram = 'c:infogram-p9WibMfC',
@@ -55,6 +54,7 @@ export enum Vendors {
     SmartAdserver = 45,
     Spotify = 'c:spotify-embed',
     StormGeo = 'c:stormgeo-RFNYgX2V',
+    SVT = 'svt-zaZ3JpBy',
     StrossleInternationalAB = 851,
     TheUKTradeDeskLtd = 21,
     TravelAudience = 423,
@@ -76,7 +76,6 @@ export enum Vendors {
     GoogleForms = 'c:googlefor-M4AiyDM2',
     GoogleMaps = 'c:googlemap-GNbjq6Rg',
     IMatricsAB = 'c:imatrics-Nx4FZNnQ',
-    Tele2Vaxel = 'c:tele2vaxe-m3hkT6kT',
 }
 
 export enum Purposes {
@@ -95,6 +94,8 @@ export enum Purposes {
     UseLimitedDataToSelectContent = 'use_limited_data_to_select_content',
     UsePreciseGeolocationData = 'geolocation_data',
     ActivelyScanDeviceCharacteristicsForIdentification = 'device_characteristics',
+    CookiesForExternalContentOrTechnology = 'cookiesfo-2mPCAWNr',
+    CookiesForAnalysisAndDevelopment = 'cookiesfo-W6bcBzLL',
 }
 
 export const EmbedVendors = {
@@ -145,12 +146,6 @@ export const EmbedVendors = {
         vendor: Vendors.GoogleMaps,
         regex: [
             /www\.google\.com\/maps\/(?:d\/)?embed/i,
-        ],
-    },
-    GotaMediaAB: {
-        vendor: Vendors.GotaMediaAB,
-        regex: [
-            /https:\/\/widgets\.gotamedia\.se\//i,
         ],
     },
     Ifragasatt: {
@@ -247,6 +242,13 @@ export const EmbedVendors = {
             /spotify\.com/i,
         ],
     },
+    SVT: {
+        vendor: Vendors.SVT,
+        regex: [
+            /svt\.se/i,
+            /svtplay\.se/i,
+        ],
+    },
 }
 
 export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
@@ -303,6 +305,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.ChartBeat]: undefined,
         [Vendors.CrazyEgg]: undefined,
         [Vendors.CriteoSA]: undefined,
+        [Vendors.Datadog]: undefined,
         [Vendors.DeltaProjectsAB]: undefined,
         [Vendors.Demandbase]: undefined,
         [Vendors.Didomi]: undefined,
@@ -311,8 +314,6 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.Essens]: undefined,
         [Vendors.Facebook]: undefined,
         [Vendors.GoogleAdvertisingProducts]: undefined,
-        [Vendors.GoogleAnalyticsProducts]: undefined,
-        [Vendors.GotaMediaAB]: undefined,
         [Vendors.ImproveDigital]: undefined,
         [Vendors.IndexExchangeInc]: undefined,
         [Vendors.Infogram]: undefined,
@@ -359,7 +360,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.GoogleForms]: undefined,
         [Vendors.GoogleMaps]: undefined,
         [Vendors.IMatricsAB]: undefined,
-        [Vendors.Tele2Vaxel]: undefined,
+        [Vendors.SVT]: undefined,
     },
     purposes: {
         [Purposes.NecessaryCookies]: undefined,
@@ -377,6 +378,8 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Purposes.UseLimitedDataToSelectContent]: undefined,
         [Purposes.UsePreciseGeolocationData]: undefined,
         [Purposes.ActivelyScanDeviceCharacteristicsForIdentification]: undefined,
+        [Purposes.CookiesForExternalContentOrTechnology]: undefined,
+        [Purposes.CookiesForAnalysisAndDevelopment]: undefined,
     },
     status: buildDefaultVendorStatus(Vendors),
     approveVendorConsent(params) {

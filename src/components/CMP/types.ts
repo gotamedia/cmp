@@ -1,6 +1,5 @@
 import type {
     IDidomiConfig,
-    OnReadyFunction,
     OnConsentChangedFunction,
     OnPreferencesClickPurposeFunction,
     OnPreferencesClickVendorFunction,
@@ -32,7 +31,7 @@ type CMPProps = {
     gdprAppliesGlobally?: boolean
     iabVersion?: number
     sdkPath?: string
-    onReady?: OnReadyFunction
+    onReady?: (didomi: IDidomiObject, userConsent: ContextType) => void
     onConsentChanged?: OnConsentChangedFunction
     onNoticeShown?: () => void
     onNoticeHidden?: () => void
