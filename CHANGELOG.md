@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/gotamedia/cmp/compare/v1.7.1...v1.8.0) (2024-03-27)
+
+
+### Features
+
+* Extended CMP functionality and updated vendors list. ([ee40cb6](https://github.com/gotamedia/cmp/commit/ee40cb62ca581a4022cd7c80b07de47af5953d59))
+
 ## [1.7.1](https://github.com/gotamedia/cmp/compare/v1.7.0...v1.7.1) (2024-02-05)
 
 
