@@ -11,6 +11,7 @@
 set -e
 
 echo "Create needed resources..."
+AWS_ACCOUNT_ID=$(aws --output json sts get-caller-identity | jq -r .Account)
 aws cloudformation deploy \
                 --template-file "aws/template.yml" \
                 --stack-name "${REPO_SLUG,,}" \
