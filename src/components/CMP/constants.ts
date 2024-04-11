@@ -54,7 +54,7 @@ export enum Vendors {
     SmartAdserver = 45,
     Spotify = 'c:spotify-embed',
     StormGeo = 'c:stormgeo-RFNYgX2V',
-    SVT = 'svt-zaZ3JpBy',
+    SVT = 'c:svt-zaZ3JpBy',
     StrossleInternationalAB = 851,
     TheUKTradeDeskLtd = 21,
     TravelAudience = 423,
