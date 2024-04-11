@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/gotamedia/cmp/compare/v1.8.0...v1.8.1) (2024-04-11)
+
+
+### Bug Fixes
+
+* Updated SVT vendor id. ([b41bf83](https://github.com/gotamedia/cmp/commit/b41bf832a623181ba77ffce834be19d99fc99fea))
+
 ## [1.8.0](https://github.com/gotamedia/cmp/compare/v1.7.1...v1.8.0) (2024-03-27)
 
 
