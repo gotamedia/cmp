@@ -56,6 +56,7 @@ export enum Vendors {
     StormGeo = 'c:stormgeo-RFNYgX2V',
     SVT = 'c:svt-zaZ3JpBy',
     StrossleInternationalAB = 851,
+    TT = 'c:tt-6ZyB7Dtj',
     TheUKTradeDeskLtd = 21,
     TravelAudience = 423,
     UserReport = 'c:userreport',
@@ -249,6 +250,13 @@ export const EmbedVendors = {
             /svtplay\.se/i,
         ],
     },
+    TT: {
+        vendor: Vendors.TT,
+        regex: [
+            /embed\.tt\.se/i,
+            /tt\.se/i,
+        ],
+    },
 }
 
 export const DEFAULT_CONSENT_CONFIG: IDidomiConfig = {
@@ -340,6 +348,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.Spotify]: undefined,
         [Vendors.StormGeo]: undefined,
         [Vendors.StrossleInternationalAB]: undefined,
+        [Vendors.TT]: undefined,
         [Vendors.TheUKTradeDeskLtd]: undefined,
         [Vendors.TravelAudience]: undefined,
         [Vendors.UserReport]: undefined,
