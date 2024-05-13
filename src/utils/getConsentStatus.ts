@@ -25,7 +25,11 @@ const getConsentStatus = (didomi: IDidomiObject) => {
 
         const userConsentStatus = {
             vendorsEnabled: userStatus.vendors.consent.enabled.filter(filterVendors) as Vendors[],
-            purposesEnabled: userStatus.purposes.consent.enabled.filter(filterPurposes) as Purposes[],
+            purposesEnabled: [
+                ...userStatus.purposes.consent.enabled.filter(filterPurposes) as Purposes[],
+                // @ts-ignore
+                ...userStatus.purposes.essential.filter(filterPurposes) as Purposes[],
+            ],
             vendorsDisabled: userStatus.vendors.consent.disabled.filter(filterVendors) as Vendors[],
             purposesDisabled: userStatus.purposes.consent.disabled.filter(filterPurposes) as Purposes[],
         }
