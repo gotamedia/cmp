@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.9.0](https://github.com/gotamedia/cmp/compare/v1.8.1...v1.9.0) (2024-05-13)
+
+
+### Features
+
+* Added TT vendor and support it's embeds. ([dfd0744](https://github.com/gotamedia/cmp/commit/dfd07446acf17c6e6821dea26f7a7ed1a87e91bb))
+
+
+### Bug Fixes
+
+* Updated userConsentStatus to match essential purposes as well. ([d7aceb2](https://github.com/gotamedia/cmp/commit/d7aceb2033740d6f1c5335d6c1aa1f5eab957c33))
+
 ## [1.8.1](https://github.com/gotamedia/cmp/compare/v1.8.0...v1.8.1) (2024-04-11)
 
 
