@@ -65,6 +65,7 @@ export enum Vendors {
     XandrInc = 32,
     YahooEMEALimited = 25,
     Youtube = 'c:youtube',
+    BNYoutube = 'c:bn-youtube',
     Flourish = 'c:flourish-2jNnChbH',
     KnightLab = 'c:knightlab-rmVaN6ra',
     Crowdsignal = 'c:crowdsigna-Pjx8yZMz',
@@ -97,6 +98,7 @@ export enum Purposes {
     ActivelyScanDeviceCharacteristicsForIdentification = 'device_characteristics',
     CookiesForExternalContentOrTechnology = 'cookiesfo-2mPCAWNr',
     CookiesForAnalysisAndDevelopment = 'cookiesfo-W6bcBzLL',
+    BonnierNewsAnalysisAndDevelopment = 'analysutv-BcCq4VEq',
 }
 
 export const EmbedVendors = {
@@ -229,6 +231,12 @@ export const EmbedVendors = {
             /https:\/\/www\.youtube\.com\/embed/i,
         ],
     },
+    BNYoutube: {
+        vendor: Vendors.BNYoutube,
+        regex: [
+            /https:\/\/www\.youtube\.com\/embed/i,
+        ],
+    },
     ShowheroesSE: {
         vendor: Vendors.ShowheroesSE,
         regex: [
@@ -357,6 +365,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Vendors.XandrInc]: undefined,
         [Vendors.YahooEMEALimited]: undefined,
         [Vendors.Youtube]: undefined,
+        [Vendors.BNYoutube]: undefined,
         [Vendors.Flourish]: undefined,
         [Vendors.KnightLab]: undefined,
         [Vendors.Crowdsignal]: undefined,
@@ -389,6 +398,7 @@ export const DEFAULT_USER_CONSENT: ContextType = {
         [Purposes.ActivelyScanDeviceCharacteristicsForIdentification]: undefined,
         [Purposes.CookiesForExternalContentOrTechnology]: undefined,
         [Purposes.CookiesForAnalysisAndDevelopment]: undefined,
+        [Purposes.BonnierNewsAnalysisAndDevelopment]: undefined,
     },
     status: buildDefaultVendorStatus(Vendors),
     approveVendorConsent(params) {
