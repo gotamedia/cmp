@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/gotamedia/cmp/compare/v1.10.0...v1.10.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* include all existing bn vendor sdk ids for embeds ([4a2c01c](https://github.com/gotamedia/cmp/commit/4a2c01cf8908af7ae9babc5dcb86183b51ee0066))
+
 ## [1.10.0](https://github.com/gotamedia/cmp/compare/v1.9.0...v1.10.0) (2024-11-28)
 
 
