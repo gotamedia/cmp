@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/gotamedia/cmp/compare/v1.9.0...v1.10.0) (2024-11-28)
+
+
+### Features
+
+* adding a purpose and vendor to make tracking in meeseeks play nice ([c01f646](https://github.com/gotamedia/cmp/commit/c01f64623750614f2065417261184e0492199375))
+
 ## [1.9.0](https://github.com/gotamedia/cmp/compare/v1.8.1...v1.9.0) (2024-05-13)
 
 
