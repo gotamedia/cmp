@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/gotamedia/cmp/compare/v1.10.1...v1.10.2) (2024-11-28)
+
+
+### Bug Fixes
+
+* remove prefix on vendor ids ([06dcafa](https://github.com/gotamedia/cmp/commit/06dcafa7b40a62e6b7274af2d4350474d221f88a))
+
 ## [1.10.1](https://github.com/gotamedia/cmp/compare/v1.10.0...v1.10.1) (2024-11-28)
 
 
