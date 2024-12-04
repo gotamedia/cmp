@@ -27,7 +27,7 @@ export enum Vendors {
     EinRadAB = 1097,
     EmerseSverigeAB = 8,
     Essens = 'c:essens-MDVrFgFB',
-    Facebook = 'bn-facebook',
+    Facebook = 'c:bn-facebook',
     GoogleAdvertisingProducts = 'google',
     ImproveDigital = 253,
     IndexExchangeInc = 10,
@@ -81,7 +81,7 @@ export enum Vendors {
 }
 
 export enum Purposes {
-    NecessaryCookies = 'necessary-FDwiVZWQ',
+    NecessaryCookies = 'nodvandiga-b3JJQXqQ',
     DevelopmentAndDebugging = 'developmen-2NYrYDqQ',
     StoreAndOrAccessInformation = 'cookies',
     CreatePersonalisedAdsProfile = 'create_ads_profile',
@@ -96,7 +96,7 @@ export enum Purposes {
     UseLimitedDataToSelectContent = 'use_limited_data_to_select_content',
     UsePreciseGeolocationData = 'geolocation_data',
     ActivelyScanDeviceCharacteristicsForIdentification = 'device_characteristics',
-    CookiesForExternalContentOrTechnology = 'cookiesfo-2mPCAWNr',
+    CookiesForExternalContentOrTechnology = 'embeds',
     CookiesForAnalysisAndDevelopment = 'cookiesfo-W6bcBzLL',
     BonnierNewsAnalysisAndDevelopment = 'analysutv-BcCq4VEq',
 }
