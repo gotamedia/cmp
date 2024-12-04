@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.3](https://github.com/gotamedia/cmp/compare/v1.10.2...v1.10.3) (2024-12-04)
+
+
+### Bug Fixes
+
+* changing to all bn purposes ([81eff35](https://github.com/gotamedia/cmp/commit/81eff35ec4ab1c781735f688db5236456e51077f))
+* update some ids to allow embeds in bns didomi ([10386af](https://github.com/gotamedia/cmp/commit/10386af5491cef6b77c8e2caf64505f2ad9b6837))
+
 ## [1.10.2](https://github.com/gotamedia/cmp/compare/v1.10.1...v1.10.2) (2024-11-28)
 
 
