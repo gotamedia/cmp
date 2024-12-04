@@ -225,8 +225,8 @@ export default {
     component: CMP,
     args: {
         config: DEFAULT_CONSENT_CONFIG,
-        apiKey: 'aac9f485-1439-4164-8cd7-e42a1e204304',
-        noticeId: 'qyYUYP6e',
+        apiKey: '839e15c5-b3dc-4adf-9a82-6d97c8ca004d',
+        noticeId: 'fk9n2GTd',
         sdkPath: 'https://sdk.privacy-center.org/',
         iabVersion: 2,
         brandColor: '#005CA9',
